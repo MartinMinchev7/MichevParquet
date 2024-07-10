@@ -1,0 +1,1 @@
+INSERT INTO roles VALUES (1, 'CLIENT'), (2, 'ADMIN')
