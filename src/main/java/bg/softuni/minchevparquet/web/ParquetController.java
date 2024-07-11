@@ -31,7 +31,7 @@ public class ParquetController {
     public String addParquet(Model model) {
 
         if (!model.containsAttribute("parquetData")) {
-            model.addAttribute("parquetData", AddParquetDTO.empty());
+            model.addAttribute("parquetData", new AddParquetDTO());
             model.addAttribute("models", ModelName.values());
         }
 

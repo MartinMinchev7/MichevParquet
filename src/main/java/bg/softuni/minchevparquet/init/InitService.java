@@ -4,11 +4,13 @@ import bg.softuni.minchevparquet.model.entity.Model;
 import bg.softuni.minchevparquet.model.entity.ModelName;
 import bg.softuni.minchevparquet.repository.ModelRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class InitService implements CommandLineRunner {
 
     private final Map<ModelName, String> descriptions = Map.of(

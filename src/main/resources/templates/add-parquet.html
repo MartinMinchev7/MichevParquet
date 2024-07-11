@@ -23,9 +23,18 @@
                 name="name"
         >
 
-        <label for="model">Model:</label>
-        <select id="model" name="model" th:field="*{modelName}">
-            <option th:each="model: ${models}" th:value="model" th:text="${model}"></option>
+        <label for="modelName">Model:</label>
+        <select
+                class="browser-default custom-select"
+                id="modelName"
+                name="modelName"
+        >
+            <option>Select style</option>
+            <option th:value="CLASSIC">Classic</option>
+            <option th:value="VINYL">Vinyl</option>
+            <option th:value="THREE_LAYERED">Three Layered</option>
+            <option th:value="LAMINATE">Laminate</option>
+            <option th:value="CARPET_TILES">Carpet Tiles</option>
         </select>
 
         <label for="size">Size:</label>
