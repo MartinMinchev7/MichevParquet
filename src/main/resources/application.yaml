@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mobilele
+    name: MinchevParquet
   thymeleaf:
     check-template-location: true
     cache: false
@@ -25,3 +25,7 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+
+parquet:
+  api:
+    baseUrl: "http://localhost:8081"

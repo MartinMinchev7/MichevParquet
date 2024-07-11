@@ -10,9 +10,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/parquets")
 public class ParquetController {
 
     private final ParquetService parquetService;
@@ -27,8 +29,8 @@ public class ParquetController {
         return "parquet";
     }
 
-    @GetMapping("/add-parquet")
-    public String addParquet(Model model) {
+    @GetMapping("add")
+    public String viewParquet(Model model) {
 
         if (!model.containsAttribute("parquetData")) {
             model.addAttribute("parquetData", new AddParquetDTO());
@@ -38,7 +40,7 @@ public class ParquetController {
         return "add-parquet";
     }
 
-    @PostMapping("/add-parquet")
+    @PostMapping("add")
     public String createParquet(@Valid AddParquetDTO addParquetDTO,
                                 BindingResult bindingResult,
                                 RedirectAttributes redirectAttributes) {
@@ -50,11 +52,7 @@ public class ParquetController {
             return "redirect:/add-parquet";
         }
 
-        boolean success = parquetService.createParquet(addParquetDTO);
-
-        if (!success) {
-            return "redirect:/add-parquet";
-        }
+        parquetService.createParquet(addParquetDTO);
 
         return "redirect:/";
     }

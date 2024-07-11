@@ -42,7 +42,7 @@ public class UserController {
 
         userService.registerUser(data);
 
-        return "redirect:/";
+        return "redirect:/users/login";
     }
 
     @GetMapping("/login")

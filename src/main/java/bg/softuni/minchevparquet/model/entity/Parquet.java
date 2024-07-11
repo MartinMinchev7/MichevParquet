@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Parquet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(unique = true, nullable = false)
     private String name;
@@ -23,11 +23,11 @@ public class Parquet {
 
     public Parquet() {}
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
