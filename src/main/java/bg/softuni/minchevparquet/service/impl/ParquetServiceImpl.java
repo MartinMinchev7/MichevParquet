@@ -2,6 +2,7 @@ package bg.softuni.minchevparquet.service.impl;
 
 import bg.softuni.minchevparquet.model.dto.AddParquetDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
+import bg.softuni.minchevparquet.model.dto.ParquetSummaryDTO;
 import bg.softuni.minchevparquet.repository.ParquetRepository;
 import bg.softuni.minchevparquet.service.ParquetService;
 import org.slf4j.Logger;
@@ -17,17 +18,13 @@ import java.util.List;
 public class ParquetServiceImpl implements ParquetService {
     private final Logger LOGGER = LoggerFactory.getLogger(ParquetServiceImpl.class);
     private final RestClient parquetRestClient;
-    private final ParquetRepository parquetRepository;
 
-    public ParquetServiceImpl(RestClient parquetRestClient, ParquetRepository parquetRepository) {
+    public ParquetServiceImpl(RestClient parquetRestClient) {
         this.parquetRestClient = parquetRestClient;
-        this.parquetRepository = parquetRepository;
     }
 
     @Override
     public void createParquet(AddParquetDTO addParquetDTO) {
-        LOGGER.debug("Creating new offer...");
-
         parquetRestClient
                 .post()
                 .uri("http://localhost:8081/parquets")
@@ -37,7 +34,10 @@ public class ParquetServiceImpl implements ParquetService {
 
     @Override
     public void deleteParquet(long parquetId) {
-        parquetRepository.deleteById(parquetId);
+        parquetRestClient
+                .delete()
+                .uri("http://localhost:8081/parquets/{id}", parquetId)
+                .retrieve();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ParquetServiceImpl implements ParquetService {
     }
 
     @Override
-    public List<ParquetDetailsDTO> getAllParquetsSummary() {
+    public List<ParquetSummaryDTO> getAllParquetsSummary() {
         return parquetRestClient
                 .get()
                 .uri("http://localhost:8081/parquets")

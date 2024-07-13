@@ -17,6 +17,8 @@ public class AddParquetDTO {
     private Integer size;
     @Positive
     private Integer classRate;
+    @Positive
+    private Integer price;
     @NotBlank
     private String imageUrl;
 
@@ -62,4 +64,12 @@ public class AddParquetDTO {
    public void setImageUrl(@NotBlank String imageUrl) {
            this.imageUrl = imageUrl;
    }
+
+    public @Positive Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(@Positive Integer price) {
+        this.price = price;
+    }
 }

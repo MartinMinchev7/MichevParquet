@@ -7,5 +7,6 @@ public record ParquetDetailsDTO(Long id,
                                 Model model,
                                 Integer size,
                                 Integer classRate,
+                                Integer price,
                                 String imageUrl) {
 }

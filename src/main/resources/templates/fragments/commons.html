@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
     <link rel="stylesoeet" href="/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<!--    <link rel="stylesheet" href="/css/style-for-all-paquets.css"/>-->
 </head>
 <body>
 <header>
@@ -47,7 +48,18 @@
                         <a class="nav-link" th:href="@{/about}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/parquet}">Our Cycle</a>
+<!--                        <a class="nav-link" th:href="@{/parquet}">Our Parquets</a>-->
+                        <a class="nav-link dropdown-toggle" th:href="@{/parquet}" id="ourParquets" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Our Parquets
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/parquets/add}">Add Parquet</a>
+                            <a class="dropdown-item" th:href="@{/parquets/all}">All Parquets</a>
+                            <a class="dropdown-item" th:href="@{/parquets/all}">All Parquets</a>
+                            <a class="dropdown-item" th:href="@{/parquets/all}">All Parquets</a>
+                            <a class="dropdown-item" th:href="@{/parquets/all}">All Parquets</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/parquet}">Shop</a>
@@ -65,9 +77,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" th:href="@{/parquets/add}">Add Parquet</a>
-                            <a class="dropdown-item" href="/">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/">Something else here</a>
+                            <a class="dropdown-item" th:href="@{/parquets/all}">All Parquets</a>
                         </div>
                     </li>
                 </ul>
