@@ -7,6 +7,7 @@ public record AddParquetDTO(
         ModelName modelName,
         Integer size,
         Integer classRate,
+        Integer price,
         String imageUrl
 ) {
 }

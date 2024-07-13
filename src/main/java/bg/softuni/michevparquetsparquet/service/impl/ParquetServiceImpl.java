@@ -4,6 +4,7 @@ import bg.softuni.michevparquetsparquet.model.dto.AddParquetDTO;
 import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
 import bg.softuni.michevparquetsparquet.model.entity.Model;
 import bg.softuni.michevparquetsparquet.model.entity.Parquet;
+import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 import bg.softuni.michevparquetsparquet.repository.ModelRepository;
 import bg.softuni.michevparquetsparquet.repository.ParquetRepository;
 import bg.softuni.michevparquetsparquet.service.ParquetService;
@@ -24,17 +25,17 @@ public class ParquetServiceImpl implements ParquetService {
     }
 
     @Override
-    public void createParquet(AddParquetDTO addParquetDTO) {
+    public ParquetDTO createParquet(AddParquetDTO addParquetDTO) {
         Optional<Parquet> byName = parquetRepository.findByName(addParquetDTO.name());
 
         if (byName.isPresent()) {
-            return;
+            throw new IllegalArgumentException("Parquet with the same name already exists!");
         }
 
         Optional<Model> byModelName = modelRepository.findByModelName(addParquetDTO.modelName());
 
         if (byModelName.isEmpty()) {
-            return;
+            throw new IllegalArgumentException("Model not found!");
         }
 
         Parquet parquet = new Parquet();
@@ -42,10 +43,12 @@ public class ParquetServiceImpl implements ParquetService {
         parquet.setModel(byModelName.get());
         parquet.setSize(addParquetDTO.size());
         parquet.setClassRate(addParquetDTO.classRate());
+        parquet.setPrice(addParquetDTO.price());
         parquet.setImageUrl(addParquetDTO.imageUrl());
 
         parquetRepository.save(parquet);
 
+        return map(parquet);
     }
 
     @Override
@@ -70,6 +73,15 @@ public class ParquetServiceImpl implements ParquetService {
                .toList();
     }
 
+    @Override
+    public List<ParquetDTO> getParquetsByModel(ModelName model) {
+        return parquetRepository
+               .findAllByModelModelName(model)
+               .stream()
+               .map(ParquetServiceImpl::map)
+               .toList();
+    }
+
     private static ParquetDTO map(Parquet parquet) {
         return new ParquetDTO(
                 parquet.getId(),
@@ -77,6 +89,7 @@ public class ParquetServiceImpl implements ParquetService {
                 parquet.getModel(),
                 parquet.getSize(),
                 parquet.getClassRate(),
+                parquet.getSize(),
                 parquet.getImageUrl()
         );
     }
