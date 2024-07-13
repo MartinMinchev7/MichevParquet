@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Parquet Item</title>
+    <link rel="stylesheet" href="/css/style3.css">
+</head>
+<body>
+<div class="container">
+    <h1>Add Parquet Item</h1>
+    <form
+          id="addParquetForm"
+          th:method="post"
+          th:action="@{/parquets/add}"
+          th:object="${parquetData}"
+    >
+        <label for="name">Name:</label>
+        <input
+                th:field="*{name}"
+                type="text"
+                id="name"
+                name="name"
+        >
+
+        <label for="modelName">Model:</label>
+        <select
+                class="browser-default custom-select"
+                id="modelName"
+                name="modelName"
+        >
+            <option>Select style</option>
+            <option th:value="CLASSIC">Classic</option>
+            <option th:value="VINYL">Vinyl</option>
+            <option th:value="THREE_LAYERED">Three Layered</option>
+            <option th:value="LAMINATE">Laminate</option>
+            <option th:value="CARPET_TILES">Carpet Tiles</option>
+        </select>
+
+        <label for="size">Size:</label>
+        <input
+                th:field="*{size}"
+                type="number"
+                id="size"
+                name="size"
+        >
+
+        <label for="classRate">Class Rate:</label>
+        <input
+                th:field="*{classRate}"
+                type="number"
+                id="classRate"
+                name="classRate"
+                step="1"
+        >
+
+        <label for="price">Price:</label>
+        <input
+                th:field="*{price}"
+                type="number"
+                id="price"
+                name="classRate"
+                step="1"
+        >
+
+        <label for="imageUrl">Image Url:</label>
+        <input
+                th:field="*{imageUrl}"
+                type="text"
+                id="imageUrl"
+                name="imageUrl"
+        >
+
+        <button type="submit" class="btn btn-primary btn-block w-50">Add Parquet</button>
+        <a type="submit" class="btn btn-primary btn-block w-50" th:href="@{/}">Back</a>
+    </form>
+</div>
+</body>
+</html>

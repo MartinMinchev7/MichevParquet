@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style2.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Registration</h2>
+    <form
+            th:action="@{/users/register}"
+            th:method="post"
+            th:object="${registerData}"
+    >
+        <div class="form-group">
+            <div class="col-auto">
+                <label for="firstName">First name</label>
+            </div>
+           <div class="col-auto">
+               <input
+                       th:field="*{firstName}"
+                       th:errorclass="'is-invalid alert-danger'"
+                       type="text"
+                       id="firstName"
+                       name="firstName"
+               >
+               <small
+                       th:each="error: ${#fields.detailedErrors('firstName')}"
+                       th:text="${error.message}"
+                       class="invalid-feedback danger" style="font-size: 15px">First name error message</small>
+           </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input
+                    th:field="*{lastName}"
+                    th:errorclass="'is-invalid'"
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+            >
+
+            <small th:if="${#fields.hasErrors('lastName')}" id="lastNameError"
+                   class="invalid-feedback bg-danger rounded">Last name is already occupied</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                    th:field="*{email}"
+                    type="email"
+                    id="email"
+                    name="email"
+            >
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+            >
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+            >
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <p>You have an account? <a th:href="@{/users/login}">Login</a></p>
+    </form>
+</div>
+</body>
+</html>
