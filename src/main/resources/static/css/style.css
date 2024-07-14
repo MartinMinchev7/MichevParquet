@@ -243,11 +243,14 @@ button {
 .navbar-expand-lg {
     position: relative;
     z-index: 9;
+
 }
 
 .logo {
-    width: 35%;
+    width: 20em;
     float: left;
+    margin-right: 10em;
+    margin-top: 1.6em;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -1138,5 +1141,25 @@ textarea#comment::placeholder {
 #navbarSupportedContent.nav-normal{
     transform: none;
 }
-
+.dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+    position: relative;
+    top: 15px;
+}
+.menu1{
+    margin-left: 38em;
+}
+.menu2{
+    position: absolute;
+    left: 55%;
+}
 /* contact section end*/
