@@ -3,6 +3,7 @@ package bg.softuni.minchevparquet.service.impl;
 import bg.softuni.minchevparquet.model.dto.AddParquetDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetSummaryDTO;
+import bg.softuni.minchevparquet.model.entity.ModelName;
 import bg.softuni.minchevparquet.repository.ParquetRepository;
 import bg.softuni.minchevparquet.service.ParquetService;
 import org.slf4j.Logger;
@@ -55,6 +56,66 @@ public class ParquetServiceImpl implements ParquetService {
         return parquetRestClient
                 .get()
                 .uri("http://localhost:8081/parquets")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+    }
+
+//    @Override
+//    public List<ParquetSummaryDTO> getAllParquetsByModelNameSummary(ModelName modelName) {
+//        return parquetRestClient
+//                .get()
+//                .uri("http://localhost:8081/parquets/{model}", modelName)
+//                .accept(MediaType.APPLICATION_JSON)
+//                .retrieve()
+//                .body(new ParameterizedTypeReference<>() {});
+//    }
+
+    @Override
+    public List<ParquetDetailsDTO> getAllVinylParquets() {
+        return  parquetRestClient
+                .get()
+                .uri("http://localhost:8081/parquets/model/vinyl")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+    }
+
+    @Override
+    public List<ParquetSummaryDTO> getAllClassicParquets() {
+        return parquetRestClient
+                .get()
+                .uri("http://localhost:8081/parquets/model/classic")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+    }
+
+    @Override
+    public List<ParquetDetailsDTO> getAllThreeLayeredParquets() {
+        return parquetRestClient
+                .get()
+                .uri("http://localhost:8081/parquets/model/three-layered")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+    }
+
+    @Override
+    public List<ParquetDetailsDTO> getAllLaminateParquets() {
+        return parquetRestClient
+                .get()
+                .uri("http://localhost:8081/parquets/model/laminate")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+    }
+
+    @Override
+    public List<ParquetDetailsDTO> getAllCarpetTilesParquets() {
+        return parquetRestClient
+                .get()
+                .uri("http://localhost:8081/parquets/model/carpet-tiles")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});

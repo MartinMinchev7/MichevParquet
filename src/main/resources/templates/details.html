@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="~{fragments/commons::head}"></head>
 
 <body>
 
-<div th:replace="~{fragments/commons::nav}"></div>
+<div th:replace="~{fragments/commons::header}"></div>
 
 <div class="container-fluid">
     <h2 class="text-center text-white mt-5">Details</h2>
@@ -41,16 +41,17 @@
 <!--                    </div>-->
                 </li>
             </ul>
-            <input type="hidden" id="priceInBGN" th:value="*{price}"/>
-            <div class="card-body">
+<!--            <input type="hidden" id="priceInBGN" th:value="*{price}"/>-->
+            <div class="card-body" sec:authorize="hasRole('ADMIN')">
                 <form th:method="delete"
                       th:action="@{/parquets/delete/{id}(id=*{id})}">
                     <input class="btn btn-link" type="submit" value="Delete"/>
                 </form>
             </div>
+<!--            <a class="btn" type="submit" th:href="@{/}">Back</a>-->
         </div>
         <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
-            <img th:src="@{${parquetDetails.imageUrl}}" class="card-img-top"  alt="Car image">
+            <img th:src="@{${parquetDetails.imageUrl}}" class="card-img-top"  alt="Parquet image">
         </div>
     </div>
 </div>

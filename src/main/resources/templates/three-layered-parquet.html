@@ -8,9 +8,9 @@
 <header th:replace="~{fragments/commons::header}"></header>
 
 <div class="container-fluid">
-    <h1 class="text-center mt-5">All Parquets</h1>
+    <h1 class="text-center mt-5">Three-Layered Parquets</h1>
     <div
-            th:each="parquet: ${parquets}"
+            th:each="parquet: ${parquetThreeLayered}"
             th:object="${parquet}"
             class="offers row mx-auto d-flex flex-row justify-content-center">
         <div class="offer card col-sm-6 col-md-3 col-lg-2 m-1 p-0">

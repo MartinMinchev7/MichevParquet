@@ -31,12 +31,19 @@ public class ParquetController {
     public ModelName[] allModelNames() {return ModelName.values();}
 
 
-    @GetMapping("/parquet")
+    @GetMapping("/")
     public String parquet() {
-        return "parquet";
+        return "parquets";
     }
 
-    @GetMapping("add")
+    @GetMapping("/all")
+    public String viewAllParquets(Model model) {
+        List<ParquetSummaryDTO> parquets = parquetService.getAllParquetsSummary();
+        model.addAttribute("parquets", parquets);
+        return "parquets";
+    }
+
+    @GetMapping("/add")
     public String viewParquet(Model model) {
 
         if (!model.containsAttribute("parquetData")) {
@@ -47,7 +54,7 @@ public class ParquetController {
         return "add-parquet";
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public String createParquet(@Valid AddParquetDTO addParquetDTO,
                                 BindingResult bindingResult,
                                 RedirectAttributes redirectAttributes) {
@@ -65,7 +72,7 @@ public class ParquetController {
     }
 
     @GetMapping("/{id}")
-    public String offerDetails(@PathVariable("id") Long id, Model model) {
+    public String parquetDetails(@PathVariable("id") Long id, Model model) {
 
         model.addAttribute("parquetDetails", parquetService.getParquetDetails(id));
 
@@ -88,18 +95,42 @@ public class ParquetController {
         return "redirect:/parquets/all";
     }
 
-    @GetMapping("/all")
-    public String viewAllParquets(Model model) {
-        List<ParquetSummaryDTO> parquets = parquetService.getAllParquetsSummary();
-        model.addAttribute("parquets", parquets);
-        return "parquets";
+//    @GetMapping("/model/{model}")
+//    public String modelParquet(@PathVariable("model") ModelName modelName, Model model) {
+//
+//        model.addAttribute("parquetModelName", parquetService.getAllParquetsByModelNameSummary(modelName));
+//
+//        return "vinyl-parquet";
+//    }
+
+    @GetMapping("/model/vinyl")
+    public String viewAllVinylParquets(Model model) {
+        model.addAttribute("parquetVinyl", parquetService.getAllVinylParquets());
+        return "vinyl-parquet";
     }
 
-//    @GetMapping("/vinyl")
-//    public String viewAllVinylParquets(Model model) {
-//        List<ParquetDetailsDTO> parquets = parquetService.getAllVinylParquets();
-//        model.addAttribute("parquets", parquets);
-//        return "parquets";
-//    }
+    @GetMapping("/model/classic")
+    public String viewAllClassicParquets(Model model) {
+        model.addAttribute("parquetClassic", parquetService.getAllClassicParquets());
+        return "classic-parquet";
+    }
+
+    @GetMapping("/model/three-layered")
+    public String viewAllThreeLayeredParquets(Model model) {
+        model.addAttribute("parquetThreeLayered", parquetService.getAllThreeLayeredParquets());
+        return "three-layered-parquet";
+    }
+
+    @GetMapping("/model/laminate")
+    public String viewAllLaminateParquets(Model model) {
+        model.addAttribute("parquetLaminate", parquetService.getAllLaminateParquets());
+        return "laminate-parquet";
+    }
+
+    @GetMapping("/model/carpet-tiles")
+    public String viewAllCarpetTilesParquets(Model model) {
+        model.addAttribute("parquetCarpetTiles", parquetService.getAllCarpetTilesParquets());
+        return "carpet-tiles-parquet";
+    }
 
 }
