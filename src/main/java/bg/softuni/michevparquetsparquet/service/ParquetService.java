@@ -15,5 +15,11 @@ public interface ParquetService {
 
     List<ParquetDTO> getAllParquets();
 
-    List<ParquetDTO> getParquetsByModel(ModelName model);
+    List<ParquetDTO> getVinylParquets();
+    List<ParquetDTO> getClassicParquets();
+    List<ParquetDTO> getThreeLayeredParquets();
+    List<ParquetDTO> getLaminateParquets();
+    List<ParquetDTO> getCarpetTilesParquets();
+
+//    List<ParquetDTO> getParquetsByModel(ModelName model);
 }

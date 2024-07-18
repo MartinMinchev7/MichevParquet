@@ -19,7 +19,7 @@ public class Parquet {
 
     private int classRate;
 
-    private int price;
+    private double price;
 
     private String imageUrl;
 
@@ -73,11 +73,11 @@ public class Parquet {
         this.imageUrl = imageUrl;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

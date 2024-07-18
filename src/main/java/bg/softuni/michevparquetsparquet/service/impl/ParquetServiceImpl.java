@@ -73,14 +73,61 @@ public class ParquetServiceImpl implements ParquetService {
                .toList();
     }
 
+//    @Override
+//    public List<ParquetDTO> getParquetsByModel(ModelName model) {
+//        return parquetRepository
+//                .findAllByModelModelName(model)
+//                .stream()
+//                .map(ParquetServiceImpl::map)
+//                .toList();
+//    }
+
     @Override
-    public List<ParquetDTO> getParquetsByModel(ModelName model) {
+    public List<ParquetDTO> getVinylParquets() {
         return parquetRepository
-               .findAllByModelModelName(model)
+               .findAllByModelModelName(ModelName.VINYL)
                .stream()
                .map(ParquetServiceImpl::map)
                .toList();
     }
+
+    @Override
+    public List<ParquetDTO> getClassicParquets() {
+        return parquetRepository
+                .findAllByModelModelName(ModelName.CLASSIC)
+                .stream()
+                .map(ParquetServiceImpl::map)
+                .toList();
+    }
+
+    @Override
+    public List<ParquetDTO> getThreeLayeredParquets() {
+        return parquetRepository
+                .findAllByModelModelName(ModelName.THREE_LAYERED)
+                .stream()
+                .map(ParquetServiceImpl::map)
+                .toList();
+    }
+
+    @Override
+    public List<ParquetDTO> getLaminateParquets() {
+        return parquetRepository
+                .findAllByModelModelName(ModelName.LAMINATE)
+                .stream()
+                .map(ParquetServiceImpl::map)
+                .toList();
+    }
+
+    @Override
+    public List<ParquetDTO> getCarpetTilesParquets() {
+        return parquetRepository
+                .findAllByModelModelName(ModelName.CARPET_TILES)
+                .stream()
+                .map(ParquetServiceImpl::map)
+                .toList();
+    }
+
+
 
     private static ParquetDTO map(Parquet parquet) {
         return new ParquetDTO(
@@ -89,7 +136,7 @@ public class ParquetServiceImpl implements ParquetService {
                 parquet.getModel(),
                 parquet.getSize(),
                 parquet.getClassRate(),
-                parquet.getSize(),
+                parquet.getPrice(),
                 parquet.getImageUrl()
         );
     }

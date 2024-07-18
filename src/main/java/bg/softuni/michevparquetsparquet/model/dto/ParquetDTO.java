@@ -9,7 +9,7 @@ public record ParquetDTO(
         Model model,
         Integer size,
         Integer classRate,
-        Integer price,
+        Double price,
         String imageUrl
 ) {
 }

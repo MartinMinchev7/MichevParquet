@@ -2,6 +2,7 @@ package bg.softuni.michevparquetsparquet.web;
 
 import bg.softuni.michevparquetsparquet.model.dto.AddParquetDTO;
 import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
+import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 import bg.softuni.michevparquetsparquet.service.ParquetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,4 +54,46 @@ public class ParquetController {
                         .toUri()
         ).body(parquetDTO);
     }
+
+    @GetMapping("/model/vinyl")
+    public ResponseEntity<List<ParquetDTO>> getVinylParquets() {
+        return ResponseEntity.ok(
+                parquetService.getVinylParquets()
+        );
+    }
+
+    @GetMapping("/model/classic")
+    public ResponseEntity<List<ParquetDTO>> getClassicParquets() {
+        return ResponseEntity.ok(
+                parquetService.getClassicParquets()
+        );
+    }
+
+    @GetMapping("/model/three-layered")
+    public ResponseEntity<List<ParquetDTO>> getThreeLayeredParquets() {
+        return ResponseEntity.ok(
+                parquetService.getThreeLayeredParquets()
+        );
+    }
+
+    @GetMapping("/model/laminate")
+    public ResponseEntity<List<ParquetDTO>> getLaminateParquets() {
+        return ResponseEntity.ok(
+                parquetService.getLaminateParquets()
+        );
+    }
+
+    @GetMapping("/model/carpet-tiles")
+    public ResponseEntity<List<ParquetDTO>> getCarpetTilesParquets() {
+        return ResponseEntity.ok(
+                parquetService.getCarpetTilesParquets()
+        );
+    }
+
+//    @GetMapping("/model/{model}")
+//    public ResponseEntity<List<ParquetDTO>> getParquetsByModel(@PathVariable("model") ModelName model) {
+//        return ResponseEntity.ok(
+//                parquetService.getParquetsByModel(model)
+//        );
+//    }
 }
