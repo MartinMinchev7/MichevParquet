@@ -2,7 +2,7 @@ package bg.softuni.minchevparquet.service.impl;
 
 import bg.softuni.minchevparquet.model.entity.User;
 import bg.softuni.minchevparquet.model.entity.UserRole;
-import bg.softuni.minchevparquet.model.entity.UserRoleEnum;
+import bg.softuni.minchevparquet.model.enums.UserRoleEnum;
 import bg.softuni.minchevparquet.model.user.MinchevParquetUserDetails;
 import bg.softuni.minchevparquet.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,6 +29,7 @@ public class MinchevParquetUserDetailsService implements UserDetailsService {
 
     private static UserDetails map(User user) {
         return new MinchevParquetUserDetails(
+                user.getUuid(),
                 user.getEmail(),
                 user.getPassword(),
                 user.getRoles().stream().map(UserRole::getRole).map(MinchevParquetUserDetailsService::map).toList(),

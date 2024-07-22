@@ -47,6 +47,10 @@
                       th:action="@{/parquets/delete/{id}(id=*{id})}">
                     <input class="btn btn-link" type="submit" value="Delete"/>
                 </form>
+                <form th:method="get"
+                      th:action="@{/parquets/add-to-favourites/{id}(id=*{id})}">
+                    <input class="btn btn-link" type="submit" value="Add to favourite"/>
+                </form>
             </div>
 <!--            <a class="btn" type="submit" th:href="@{/}">Back</a>-->
         </div>

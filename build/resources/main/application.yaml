@@ -29,3 +29,7 @@ spring:
 parquet:
   api:
     baseUrl: "http://localhost:8081"
+
+jwt:
+  secret: ${JWT_KEY:314CnuH"2RR.,Vt&6yPVvm]A!T314CnuH"2RR.,Vt&6yPVvm]A!T314CnuH"2RR.,Vt&6yPVvm]A!T}
+  expiration: ${JWT_EXPIRATION:60000}

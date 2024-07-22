@@ -1,7 +1,6 @@
 package bg.softuni.minchevparquet.model.dto;
 
-import bg.softuni.minchevparquet.model.entity.Model;
-import bg.softuni.minchevparquet.model.entity.ModelName;
+import bg.softuni.minchevparquet.model.enums.ModelName;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;

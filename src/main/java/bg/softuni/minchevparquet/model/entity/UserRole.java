@@ -1,5 +1,6 @@
 package bg.softuni.minchevparquet.model.entity;
 
+import bg.softuni.minchevparquet.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 

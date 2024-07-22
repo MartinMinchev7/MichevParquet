@@ -1,9 +1,8 @@
 package bg.softuni.minchevparquet.web;
 
 import bg.softuni.minchevparquet.model.dto.AddParquetDTO;
-import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetSummaryDTO;
-import bg.softuni.minchevparquet.model.entity.ModelName;
+import bg.softuni.minchevparquet.model.enums.ModelName;
 import bg.softuni.minchevparquet.service.ParquetService;
 import bg.softuni.minchevparquet.service.exception.ObjectNotFoundException;
 import jakarta.validation.Valid;
@@ -89,11 +88,28 @@ public class ParquetController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteOffer(@PathVariable("id") Long id) {
+    public String deleteParquet(@PathVariable("id") Long id) {
         parquetService.deleteParquet(id);
 
         return "redirect:/parquets/all";
     }
+
+//    @GetMapping("/add-to-favourites/{parquetId}")
+//    public String addToFavourite(@PathVariable("parquetId") Long parquetId,
+//                                 @AuthenticationPrincipal MinchevParquetUserDetails user) {
+//
+//        if (user == null) {
+//            throw new IllegalStateException("User must be authenticated to add parquet to favourites.");
+//        }
+//        if (parquetId == null) {
+//            throw new IllegalArgumentException("Parquet ID must be provided.");
+//        }
+//
+//
+//        parquetService.addToFavourite(user.getId(), parquetId);
+//
+//        return "redirect:/details";
+//    }
 
 //    @GetMapping("/model/{model}")
 //    public String modelParquet(@PathVariable("model") ModelName modelName, Model model) {

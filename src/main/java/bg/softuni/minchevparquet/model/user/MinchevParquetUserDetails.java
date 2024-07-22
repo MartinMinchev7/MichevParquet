@@ -5,13 +5,16 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public class MinchevParquetUserDetails extends User {
 
     private final String firstName;
     private final String lastName;
+    private final UUID uuid;
 
     public MinchevParquetUserDetails(
+            UUID uuid,
             String email,
             String password,
             Collection<? extends GrantedAuthority> authorities,
@@ -20,6 +23,7 @@ public class MinchevParquetUserDetails extends User {
     ) {
 
         super(email, password, authorities);
+        this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -30,6 +34,10 @@ public class MinchevParquetUserDetails extends User {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public UUID getUuid() {
+        return uuid;
     }
 
     public String getFullName() {

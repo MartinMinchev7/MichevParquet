@@ -1,9 +1,13 @@
 package bg.softuni.minchevparquet.model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import static java.sql.Types.VARCHAR;
 
 @Entity
 @Table(name = "users")
@@ -21,15 +25,19 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @UUIDSequence
+    @JdbcTypeCode(VARCHAR)
+    private UUID uuid;
+
     @Column(nullable = false)
     private String password;
 
     @OneToMany
-    private List<Parquet> parquets;
+    private List<Parquet> favouriteParquets;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_roles",
+            name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
@@ -78,12 +86,12 @@ public class User {
         this.password = password;
     }
 
-    public List<Parquet> getParquets() {
-        return parquets;
+    public List<Parquet> getFavouriteParquets() {
+        return favouriteParquets;
     }
 
-    public void setParquets(List<Parquet> parquets) {
-        this.parquets = parquets;
+    public void setFavouriteParquets(List<Parquet> parquets) {
+        this.favouriteParquets = parquets;
     }
 
     public List<UserRole> getRoles() {
@@ -94,15 +102,29 @@ public class User {
         this.roles = roles;
     }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
     @Override
     public String toString() {
         return "User{" +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", uuid=" + uuid +
                 ", password='" + password + '\'' +
-                ", parquets=" + parquets +
+                ", favouriteParquets=" + favouriteParquets +
                 ", roles=" + roles +
                 '}';
+    }
+
+    public void addFavourite(Parquet parquet) {
+        this.favouriteParquets.add(parquet);
     }
 }

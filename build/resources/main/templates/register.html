@@ -26,10 +26,15 @@
                        id="firstName"
                        name="firstName"
                >
-               <small
-                       th:each="error: ${#fields.detailedErrors('firstName')}"
-                       th:text="${error.message}"
-                       class="invalid-feedback danger" style="font-size: 15px">First name error message</small>
+
+<!--               <small th:errors="*{firstName}" id="firstNameError" class="invalid-feedback bg-danger">-->
+<!--                   Username is already occupied-->
+<!--               </small>-->
+
+<!--               <small-->
+<!--                       th:each="error: ${#fields.detailedErrors('firstName')}"-->
+<!--                       th:text="${error.message}"-->
+<!--                       class="invalid-feedback danger" style="font-size: 15px">First name error message</small>-->
            </div>
         </div>
         <div class="form-group">

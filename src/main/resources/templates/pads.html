@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/commons::head}"></head>
+
+<body>
+
+<header th:replace="~{fragments/commons::header}"></header>
+
+<div class="container-fluid">
+    <h1 class="text-center mt-5">All Pads</h1>
+    <div
+            th:each="pad: ${pads}"
+            th:object="${pad}"
+            class="offers row mx-auto d-flex flex-row justify-content-center">
+        <div class="offer card col-sm-6 col-md-3 col-lg-2 m-1 p-0">
+            <div class="card-img-top-wrapper">
+                <img class="card-img-top" th:src="@{${pad.imageUrl}}" alt="Parquet image">
+            </div>
+            <ul class="offer-details list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="card-text">• Size: <span th:text="*{size}">Size</span></div>
+                    <div class="card-text">• Price: <span th:text="*{price}">Price</span></div>
+                </li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link" th:href="@{/pads/{id}(id=${pad.id})}">Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

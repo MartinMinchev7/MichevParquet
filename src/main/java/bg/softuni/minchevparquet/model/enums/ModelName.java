@@ -1,4 +1,4 @@
-package bg.softuni.minchevparquet.model.entity;
+package bg.softuni.minchevparquet.model.enums;
 
 public enum ModelName {
     CLASSIC,

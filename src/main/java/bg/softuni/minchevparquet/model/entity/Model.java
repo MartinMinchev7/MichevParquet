@@ -1,5 +1,6 @@
 package bg.softuni.minchevparquet.model.entity;
 
+import bg.softuni.minchevparquet.model.enums.ModelName;
 import jakarta.persistence.*;
 
 @Entity
