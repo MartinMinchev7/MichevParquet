@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Parquet Item</title>
+    <link rel="stylesheet" href="/css/style3.css">
+</head>
+<body>
+<div class="container">
+    <h1>Add Pad Item</h1>
+    <form
+            id="addParquetForm"
+            th:method="post"
+            th:action="@{/pads/add}"
+            th:object="${padData}"
+    >
+
+        <label for="padModelName">Model:</label>
+        <select
+                class="browser-default custom-select"
+                id="padModelName"
+                name="padModelName"
+        >
+            <option>Select style</option>
+            <option th:value="VOX">Vox</option>
+            <option th:value="VILO">Vilo</option>
+        </select>
+
+        <label for="size">Size:</label>
+        <input
+                th:field="*{size}"
+                type="number"
+                id="size"
+                name="size"
+        >
+
+        <label for="price">Price:</label>
+        <input
+                th:field="*{price}"
+                type="number"
+                id="price"
+                name="classRate"
+                step="0.01"
+        >
+
+        <label for="imageUrl">Image Url:</label>
+        <input
+                th:field="*{imageUrl}"
+                type="text"
+                id="imageUrl"
+                name="imageUrl"
+        >
+
+        <button type="submit" class="btn btn-primary btn-block w-50">Add Pad</button>
+        <a type="submit" class="btn btn-primary btn-block w-50" th:href="@{/}">Back</a>
+
+    </form>
+</div>
+</body>
+</html>
