@@ -519,7 +519,7 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
 .cycles_text:after {
     content: '';
     position: absolute;
-    width: 180px;
+    width: 300px;
     height: 1px;
     background-color: #325662;
     left: 0px;
