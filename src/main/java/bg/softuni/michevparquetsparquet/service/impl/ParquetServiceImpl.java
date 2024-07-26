@@ -127,6 +127,10 @@ public class ParquetServiceImpl implements ParquetService {
                 .toList();
     }
 
+//    @Override
+//    public Optional<Parquet> getParquetEntityById(Long id) {
+//        return parquetRepository.findById(id);
+//    }
 
 
     private static ParquetDTO map(Parquet parquet) {

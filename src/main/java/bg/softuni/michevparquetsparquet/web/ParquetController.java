@@ -2,15 +2,19 @@ package bg.softuni.michevparquetsparquet.web;
 
 import bg.softuni.michevparquetsparquet.model.dto.AddParquetDTO;
 import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
+import bg.softuni.michevparquetsparquet.model.entity.Parquet;
 import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 import bg.softuni.michevparquetsparquet.service.ParquetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/parquets")
@@ -27,6 +31,12 @@ public class ParquetController {
         return ResponseEntity
                 .ok(parquetService.getParquetById(id));
     }
+
+//    @GetMapping("/add-to-favourites/{id}")
+//    public ResponseEntity<Optional<Parquet>> findParquetById(@PathVariable("id") Long id) {
+//        return ResponseEntity
+//                .ok(parquetService.getParquetEntityById(id));
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ParquetDTO> deleteById(@PathVariable("id") Long id) {

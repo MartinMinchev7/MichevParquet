@@ -2,9 +2,11 @@ package bg.softuni.michevparquetsparquet.service;
 
 import bg.softuni.michevparquetsparquet.model.dto.AddParquetDTO;
 import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
+import bg.softuni.michevparquetsparquet.model.entity.Parquet;
 import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ParquetService {
     ParquetDTO createParquet(AddParquetDTO addParquetDTO);
@@ -20,6 +22,8 @@ public interface ParquetService {
     List<ParquetDTO> getThreeLayeredParquets();
     List<ParquetDTO> getLaminateParquets();
     List<ParquetDTO> getCarpetTilesParquets();
+
+//    Optional<Parquet> getParquetEntityById(Long id);
 
 //    List<ParquetDTO> getParquetsByModel(ModelName model);
 }
