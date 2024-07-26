@@ -34,9 +34,7 @@ public class RestConfig {
                                 mpud.getUuid().toString(),
                                 Map.of(
                                         "roles",
-                                        mpud.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList(),
-                                        "user",
-                                        mpud.getUuid().toString()
+                                        mpud.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList()
                                 )
                         );
                         request.getHeaders().setBearerAuth(bearerToken);

@@ -1,5 +1,6 @@
 package bg.softuni.minchevparquet.model.entity;
 
+import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 
@@ -125,6 +126,8 @@ public class User {
     }
 
     public void addFavourite(Parquet parquet) {
-        this.favouriteParquets.add(parquet);
+        if (!favouriteParquets.contains(parquet)) {
+            favouriteParquets.add(parquet);
+        }
     }
 }

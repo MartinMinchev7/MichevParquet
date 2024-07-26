@@ -17,6 +17,7 @@ import org.springframework.web.client.RestClient;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ParquetServiceImpl implements ParquetService {
@@ -58,21 +59,39 @@ public class ParquetServiceImpl implements ParquetService {
                 .body(ParquetDetailsDTO.class);
     }
 
-//    @Override
-//    public void addToFavourite(Long id, Long parquetId) {
-//        Optional<User> byId = userRepository.findById(id);
-//
-//        if (byId.isEmpty()) {
-//            return;
-//        }
-//
-//        ParquetDetailsDTO parquetDetails = getParquetDetails(parquetId);
-//
-//        Parquet parquet = modelMapper.map(parquetDetails, Parquet.class);
-//
-//        byId.get().addFavourite(parquet);
-//        userRepository.save(byId.get());
-//    }
+    @Override
+    public Parquet getParquet(Long id) {
+        return parquetRestClient
+                .get()
+                .uri("http://localhost:8081/parquets/add-to-favourites/{id}", id)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(Parquet.class);
+    }
+
+    @Override
+    public void addToFavourite(UUID uuid, Long parquetId) {
+        Optional<User> byUuid = userRepository.findByUuid(uuid);
+
+        if (byUuid.isEmpty()) {
+            return;
+        }
+
+        ParquetDetailsDTO parquetDetails = getParquetDetails(parquetId);
+
+        Parquet parquet = new Parquet();
+        parquet.setId(parquetDetails.id());
+        parquet.setName(parquetDetails.name());
+        parquet.setModel(parquetDetails.model());
+        parquet.setSize(parquetDetails.size());
+        parquet.setClassRate(parquetDetails.classRate());
+        parquet.setPrice(parquetDetails.price());
+        parquet.setImageUrl(parquetDetails.imageUrl());
+
+        byUuid.get().addFavourite(parquet);
+
+        userRepository.save(byUuid.get());
+    }
 
     @Override
     public List<ParquetSummaryDTO> getAllParquetsSummary() {

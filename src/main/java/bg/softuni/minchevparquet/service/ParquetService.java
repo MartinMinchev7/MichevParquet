@@ -3,8 +3,10 @@ package bg.softuni.minchevparquet.service;
 import bg.softuni.minchevparquet.model.dto.AddParquetDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetSummaryDTO;
+import bg.softuni.minchevparquet.model.entity.Parquet;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ParquetService {
     void createParquet(AddParquetDTO addParquetDTO);
@@ -13,7 +15,9 @@ public interface ParquetService {
 
     ParquetDetailsDTO getParquetDetails(Long id);
 
-//    void addToFavourite(Long id, Long parquetId);
+    Parquet getParquet(Long id);
+
+    void addToFavourite(UUID uuid, Long parquetId);
 
     List<ParquetSummaryDTO> getAllParquetsSummary();
 

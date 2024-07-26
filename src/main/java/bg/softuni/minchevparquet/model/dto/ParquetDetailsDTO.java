@@ -9,4 +9,8 @@ public record ParquetDetailsDTO(Long id,
                                 Integer classRate,
                                 Double price,
                                 String imageUrl) {
+
+    public static ParquetDetailsDTO empty() {
+        return new ParquetDetailsDTO(null, null, null,null, null, null, null);
+    }
 }

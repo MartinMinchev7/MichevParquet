@@ -1,6 +1,7 @@
 package bg.softuni.minchevparquet.service.impl;
 
 import bg.softuni.minchevparquet.model.dto.UserRegisterDTO;
+import bg.softuni.minchevparquet.model.entity.Parquet;
 import bg.softuni.minchevparquet.model.entity.User;
 import bg.softuni.minchevparquet.model.entity.UserRole;
 import bg.softuni.minchevparquet.model.enums.UserRoleEnum;
@@ -14,7 +15,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -45,6 +49,12 @@ public class UserServiceImpl implements UserService {
         }
 
         return Optional.empty();
+    }
+
+    public List<Parquet> findFavourites(UUID uuid) {
+        return userRepository.findByUuid(uuid)
+               .map(User::getFavouriteParquets)
+               .orElse(new ArrayList<>());
     }
 
     private User map(UserRegisterDTO userRegisterDTO) {

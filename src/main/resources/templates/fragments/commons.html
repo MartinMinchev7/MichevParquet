@@ -82,6 +82,18 @@
                             <a class="dropdown-item" th:href="@{/pads/all}">All Pads</a>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <form th:method="get">
+                            <label class="nav-link" for="lang" th:text="#{nav_bar_language}">Language: </label>
+                            <select
+                                    id="lang"
+                                    name="lang"
+                                    onchange="this.form.submit()">
+                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                            </select>
+                        </form>
+                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <div class="login_menu">
@@ -123,7 +135,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <h1 class="banner_taital">HOT SUMMER DEALS</h1>
-                                    <p class="banner_text">It is a long-established fact that a reader will be distracted by the readable content </p>
+                                    <p class="banner_text">20% discount on our most popular products</p>
 <!--                                    <div class="contact_bt"><a href="contact.html">Shop Now</a></div>-->
                                 </div>
                             </div>
@@ -137,7 +149,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <h1 class="banner_taital">FREE MONTAGE</h1>
-                                    <p class="banner_text">It is a long established fact that a reader will be distracted by the readable content </p>
+                                    <p class="banner_text">On any non-promotional decor, laminated parquet and within a maximum radius of 40 km from our store</p>
 <!--                                    <div class="contact_bt"><a href="contact.html">Shop Now</a></div>-->
                                 </div>
                             </div>
@@ -151,7 +163,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <h1 class="banner_taital">FREE DELIVERY</h1>
-                                    <p class="banner_text">It is a long established fact that a reader will be distracted by the readable content </p>
+                                    <p class="banner_text">On all online orders over BGN 599</p>
 <!--                                    <div class="contact_bt"><a href="contact.html">Shop Now</a></div>-->
                                 </div>
                             </div>
