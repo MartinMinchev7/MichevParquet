@@ -23,6 +23,8 @@ public interface ParquetService {
     List<ParquetDTO> getLaminateParquets();
     List<ParquetDTO> getCarpetTilesParquets();
 
+    void cleanupOldParquets();
+
 //    Optional<Parquet> getParquetEntityById(Long id);
 
 //    List<ParquetDTO> getParquetsByModel(ModelName model);

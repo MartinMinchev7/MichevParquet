@@ -1,6 +1,9 @@
 package bg.softuni.michevparquetsparquet.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "parquets")
@@ -13,15 +16,24 @@ public class Parquet {
     private String name;
 
     @ManyToOne
+    @Column(nullable = false)
     private Model model;
 
+    @Column(nullable = false)
     private int size;
 
+    @Column(nullable = false)
     private int classRate;
 
+    @Column(nullable = false)
     private double price;
 
+    @Column(nullable = false, unique = true)
     private String imageUrl;
+
+    @NotNull
+    @Column
+    private Instant created = Instant.now();
 
     public Parquet() {}
 
@@ -79,6 +91,14 @@ public class Parquet {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public @NotNull Instant getCreated() {
+        return created;
+    }
+
+    public void setCreated(@NotNull Instant created) {
+        this.created = created;
     }
 }
 

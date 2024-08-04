@@ -8,8 +8,11 @@ import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 import bg.softuni.michevparquetsparquet.repository.ModelRepository;
 import bg.softuni.michevparquetsparquet.repository.ParquetRepository;
 import bg.softuni.michevparquetsparquet.service.ParquetService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,10 +21,15 @@ public class ParquetServiceImpl implements ParquetService {
 
     private final ParquetRepository parquetRepository;
     private final ModelRepository modelRepository;
+    private final Period retentionPeriod;
 
-    public ParquetServiceImpl(ParquetRepository parquetRepository, ModelRepository modelRepository) {
+
+    public ParquetServiceImpl(ParquetRepository parquetRepository,
+                              ModelRepository modelRepository,
+                              @Value("${parquets.retention.period}") Period retentionPeriod) {
         this.parquetRepository = parquetRepository;
         this.modelRepository = modelRepository;
+        this.retentionPeriod = retentionPeriod;
     }
 
     @Override
@@ -125,6 +133,14 @@ public class ParquetServiceImpl implements ParquetService {
                 .stream()
                 .map(ParquetServiceImpl::map)
                 .toList();
+    }
+
+    @Override
+    public void cleanupOldParquets() {
+        Instant now = Instant.now();
+        Instant deleteBefore = now.minus(retentionPeriod);
+
+        parquetRepository.deleteOldParquets(deleteBefore);
     }
 
 //    @Override
