@@ -41,15 +41,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">Home</a>
+                        <a class="nav-link" th:href="@{/}" th:text="#{nav_bar_home}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#section_about">About</a>
+                        <a class="nav-link" href="#section_about" th:text="#{nav_bar_about}">About</a>
                     </li>
                     <li class="nav-item">
 <!--                        <a class="nav-link" th:href="@{/parquet}">Our Parquets</a>-->
                         <a class="nav-link dropdown-toggle" th:href="@{/parquet}" id="ourParquets" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{nav_bar_products}">
                             Our Parquets
                         </a>
                         <div class="dropdown-menu menu1" aria-labelledby="navbarDropdown">
@@ -62,13 +62,13 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#section_parquet">Shop</a>
+                        <a class="nav-link" href="#section_parquet" th:text="#{nav_bar_shop}">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#section_news">News</a>
+                        <a class="nav-link" href="#section_news" th:text="#{nav_bar_news}">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#section_contact">Contact Us</a>
+                        <a class="nav-link" href="#section_contact" th:text="#{nav_bar_contact}">Contact Us</a>
                     </li>
                     <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                         <a class="nav-link dropdown-toggle" href="/" id="dropDown" role="button"
@@ -83,14 +83,15 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <form th:method="get">
-                            <label class="nav-link" for="lang" th:text="#{nav_bar_language}">Language: </label>
-                            <select
+                        <form th:method="get" class= "navbar-nav">
+                            <label class="nav-link" for="lang" th:text="#{nav_bar_language}">Language:</label>
+                            <select class="nav-language-changer selectCHE"
                                     id="lang"
                                     name="lang"
-                                    onchange="this.form.submit()">
-                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
-                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                                    onchange="this.form.submit()"
+                            >
+                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'" class="optionCHer">English</option>
+                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'" class="optionCHer">Български</option>
                             </select>
                         </form>
                     </li>
@@ -98,7 +99,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     <div class="login_menu">
                         <ul>
-                            <li sec:authorize="!isAuthenticated()"><a th:href="@{/users/login}">Login</a></li>
+                            <li sec:authorize="!isAuthenticated()"><a th:href="@{/users/login}" th:text="#{nav_bar_login}">Login</a></li>
                             <li sec:authorize="isAuthenticated()">
                                 <form
                                         th:method="post"
@@ -134,23 +135,8 @@
                                     <div class="image_1"><img src="/images/banner_img.png"></div>
                                 </div>
                                 <div class="col-md-5">
-                                    <h1 class="banner_taital">HOT SUMMER DEALS</h1>
-                                    <p class="banner_text">20% discount on our most popular products</p>
-<!--                                    <div class="contact_bt"><a href="contact.html">Shop Now</a></div>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <div class="image_1"><img src="/images/banner2_img.png"></div>
-                                </div>
-                                <div class="col-md-5">
-                                    <h1 class="banner_taital">FREE MONTAGE</h1>
-                                    <p class="banner_text">On any non-promotional decor, laminated parquet and within a maximum radius of 40 km from our store</p>
-<!--                                    <div class="contact_bt"><a href="contact.html">Shop Now</a></div>-->
+                                    <h1 class="banner_taital" th:text="#{banner_1}">HOT SUMMER DEALS</h1>
+                                    <p class="banner_text" th:text="#{banner_text_1}">20% discount on our most popular products</p>
                                 </div>
                             </div>
                         </div>
@@ -162,9 +148,21 @@
                                     <div class="image_1"><img src="/images/banner3_img.png"></div>
                                 </div>
                                 <div class="col-md-5">
-                                    <h1 class="banner_taital">FREE DELIVERY</h1>
-                                    <p class="banner_text">On all online orders over BGN 599</p>
-<!--                                    <div class="contact_bt"><a href="contact.html">Shop Now</a></div>-->
+                                    <h1 class="banner_taital" th:text="#{banner_2}">FREE MONTAGE</h1>
+                                    <p class="banner_text" th:text="#{banner_text_2}">On any non-promotional decor, laminated parquet and within a maximum radius of 40 km from our store</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="image_1"><img src="/images/banner2_img.png"></div>
+                                </div>
+                                <div class="col-md-5">
+                                    <h1 class="banner_taital" th:text="#{banner_3}">FREE DELIVERY</h1>
+                                    <p class="banner_text" th:text="#{banner_text_3}">On all online orders over BGN 599</p>
                                 </div>
                             </div>
                         </div>
@@ -193,21 +191,19 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12">
-                    <div class="call_text"><a href="#"><img src="/images/map-icon.png"><span class="padding_left_0">Page when looking at its layout</span></a></div>
-                    <div class="call_text"><a href="#"><img src="/images/call-icon.png"><span class="padding_left_0">Call Now  +01 123467890</span></a></div>
-                    <div class="call_text"><a href="#"><img src="/images/mail-icon.png"><span class="padding_left_0">demo@gmail.com</span></a></div>
+                    <div class="call_text"><a href="#sectoin_contact"><img src="/images/map-icon.png"><span class="padding_left_0" th:text="#{footer_section_text_1}">Where can you find us?</span></a></div>
+                    <div class="call_text"><a href="#section_contact"><img src="/images/call-icon.png"><span class="padding_left_0" th:text="#{footer_section_text_2}">Call Now  +01 123467890</span></a></div>
+                    <div class="call_text"><a href="#section_contact"><img src="/images/mail-icon.png"><span class="padding_left_0" th:text="#{footer_section_text_3}">parquets@gmail.com</span></a></div>
                     <div class="social_icon">
                         <ul>
                             <li><a href="#"><img src="/images/fb-icon1.png"></a></li>
-                            <li><a href="#"><img src="/images/twitter-icon.png"></a></li>
-                            <li><a href="#"><img src="/images/linkedin-icon.png"></a></li>
                             <li><a href="#"><img src="/images/instagram-icon.png"></a></li>
                         </ul>
                     </div>
-                    <label>
-                        <input type="text" class="email_text" placeholder="Enter Your Email" name="Enter Your Email"/>
-                    </label>
-                    <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+<!--                    <label>-->
+<!--                        <input type="text" class="email_text" placeholder="Enter Your Email" name="Enter Your Email"/>-->
+<!--                    </label>-->
+<!--                    <div class="subscribe_bt"><a href="#">Subscribe</a></div>-->
                 </div>
             </div>
         </div>

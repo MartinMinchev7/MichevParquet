@@ -519,10 +519,10 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
 .cycles_text:after {
     content: '';
     position: absolute;
-    width: 300px;
+    width: 250px;
     height: 1px;
     background-color: #325662;
-    left: 0px;
+    left: -270px;
     right: initial;
     margin: 0 auto;
     top: 70px;
@@ -637,7 +637,7 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
 .about_section {
     width: 100%;
     float: left;
-    background-image: url(../images/about-bg.png);
+    background-image: url(../images/background.png);
     height: auto;
     padding: 90px 0px;
     background-size: 100%;
@@ -1163,3 +1163,42 @@ textarea#comment::placeholder {
     left: 55%;
 }
 /* contact section end*/
+.col-md-6>h1{
+    position: relative;
+    left: 280px;
+    width: 50%;
+}
+.image_5{
+    position: relative;
+    bottom: 80px;
+    width: 50%;
+    height: auto;
+}
+.selectCHE{
+    background-color: #274D5A;
+    color: white;
+}
+
+.selectCHE>ul.list{
+    background-color: #274D5A;
+    color: white;
+
+}
+.nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
+    background-color: #f7c17b;
+}
+.carticki{
+    display: flex;
+}
+.element-maper{
+    display: block;
+    width: 30%;
+}
+.card {
+    width: 300px;
+}
+.col-lg-2 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+     max-width: 100%;
+}
