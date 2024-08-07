@@ -15,33 +15,37 @@ import java.util.Map;
 public class RestConfig {
 
     @Bean
-    public RestClient parquetRestClient(ParquetApiConfig parquetApiConfig) {
+    public RestClient parquetRestClient(ParquetApiConfig parquetApiConfig,
+                                        ClientHttpRequestInterceptor requestInterceptor) {
         return RestClient.builder()
                 .baseUrl(parquetApiConfig.getBaseUrl())
                 .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                .requestInterceptor(requestInterceptor)
                 .build();
     }
 
     @Bean
     public ClientHttpRequestInterceptor requestInterceptor(UserService userService,
                                                            JwtService jwtService) {
-
-        return (request, body, execution) -> {
+        return (r, b, e) -> {
+            // put the logged user details into bearer token
             userService
                     .getCurrentUser()
-                    .ifPresent(mpud -> {
+                    .ifPresent(mud -> {
                         String bearerToken = jwtService.generateJwtToken(
-                                mpud.getUuid().toString(),
+                                mud.getUuid().toString(),//
                                 Map.of(
                                         "roles",
-                                        mpud.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList()
+                                        mud.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList()
                                 )
                         );
-                        request.getHeaders().setBearerAuth(bearerToken);
+
+                        System.out.println("BEARER TOKEN: " + bearerToken);
+
+                        r.getHeaders().setBearerAuth(bearerToken);
                     });
 
-            return execution.execute(request, body);
+            return e.execute(r, b);
         };
-
     }
 }

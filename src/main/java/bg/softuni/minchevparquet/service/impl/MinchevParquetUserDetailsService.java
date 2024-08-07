@@ -34,7 +34,8 @@ public class MinchevParquetUserDetailsService implements UserDetailsService {
                 user.getPassword(),
                 user.getRoles().stream().map(UserRole::getRole).map(MinchevParquetUserDetailsService::map).toList(),
                 user.getFirstName(),
-                user.getLastName()
+                user.getLastName(),
+                user.getId()
         );
     }
 

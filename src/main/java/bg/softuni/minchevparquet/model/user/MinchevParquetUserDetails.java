@@ -12,6 +12,7 @@ public class MinchevParquetUserDetails extends User {
     private final String firstName;
     private final String lastName;
     private final UUID uuid;
+    private final Long id;
 
     public MinchevParquetUserDetails(
             UUID uuid,
@@ -19,13 +20,19 @@ public class MinchevParquetUserDetails extends User {
             String password,
             Collection<? extends GrantedAuthority> authorities,
             String firstName,
-            String lastName
+            String lastName,
+            Long id
     ) {
 
         super(email, password, authorities);
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {

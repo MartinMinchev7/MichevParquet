@@ -1,5 +1,6 @@
 package bg.softuni.minchevparquet.service.impl;
 
+import bg.softuni.minchevparquet.model.dto.RenameDTO;
 import bg.softuni.minchevparquet.model.dto.UserRegisterDTO;
 import bg.softuni.minchevparquet.model.entity.Parquet;
 import bg.softuni.minchevparquet.model.entity.User;
@@ -51,11 +52,24 @@ public class UserServiceImpl implements UserService {
         return Optional.empty();
     }
 
-    public List<Parquet> findFavourites(UUID uuid) {
-        return userRepository.findByUuid(uuid)
-               .map(User::getFavouriteParquets)
-               .orElse(new ArrayList<>());
+    @Override
+    public void renameUser(User user, RenameDTO renameDTO) {
+        user.setFirstName(renameDTO.getFirstName());
+        user.setLastName(renameDTO.getLastName());
+        userRepository.save(user);
+
     }
+
+    @Override
+    public Optional<User> getUserDetails(Long id) {
+        return userRepository.findById(id);
+    }
+
+//    public List<Parquet> findFavourites(UUID uuid) {
+//        return userRepository.findByUuid(uuid)
+//               .map(User::getFavouriteParquets)
+//               .orElse(new ArrayList<>());
+//    }
 
     private User map(UserRegisterDTO userRegisterDTO) {
         User user = modelMapper.map(userRegisterDTO, User.class);

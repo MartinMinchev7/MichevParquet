@@ -103,29 +103,29 @@ public class ParquetController {
         return "redirect:/parquets/all";
     }
 
-    @GetMapping("/add-to-favourites/{parquetId}")
-    public String addToFavourite(@PathVariable("parquetId") Long parquetId,
-                                 @AuthenticationPrincipal MinchevParquetUserDetails user, Model model) {
-
-        if (user == null) {
-            throw new IllegalStateException("User must be authenticated to add parquet to favourites.");
-        }
-        if (parquetId == null) {
-            throw new IllegalArgumentException("Parquet ID must be provided.");
-        }
-
-
-        parquetService.addToFavourite(user.getUuid(), parquetId);
-
-//        List<ParquetDetailsDTO> parquets = userService.findFavourites(user.getUuid())
-//                .stream()
-//                .map(parquet -> modelMapper.map(parquet, ParquetDetailsDTO.class) )
-//                .toList();
+//    @GetMapping("/add-to-favourites/{parquetId}")
+//    public String addToFavourite(@PathVariable("parquetId") Long parquetId,
+//                                 @AuthenticationPrincipal MinchevParquetUserDetails user, Model model) {
 //
-//        model.addAttribute("parquets", parquets);
-
-        return "redirect:/details";
-    }
+//        if (user == null) {
+//            throw new IllegalStateException("User must be authenticated to add parquet to favourites.");
+//        }
+//        if (parquetId == null) {
+//            throw new IllegalArgumentException("Parquet ID must be provided.");
+//        }
+//
+//
+//        parquetService.addToFavourite(user.getUuid(), parquetId);
+//
+////        List<ParquetDetailsDTO> parquets = userService.findFavourites(user.getUuid())
+////                .stream()
+////                .map(parquet -> modelMapper.map(parquet, ParquetDetailsDTO.class) )
+////                .toList();
+////
+////        model.addAttribute("parquets", parquets);
+//
+//        return "redirect:/details";
+//    }
 
 //    @GetMapping("/model/{model}")
 //    public String modelParquet(@PathVariable("model") ModelName modelName, Model model) {

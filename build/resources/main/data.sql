@@ -1,4 +1,4 @@
-INSERT INTO roles VALUES (1, 'CLIENT'), (2, 'ADMIN'), (3, 'MODERATOR');
+INSERT INTO roles VALUES (1, 'CLIENT'), (2, 'ADMIN');
 
 INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `uuid`)
 VALUES
@@ -7,5 +7,4 @@ VALUES
 INSERT INTO `users_roles` (`user_id`, `role_id`)
 VALUES
     (1, 1),
-    (1, 2),
-    (1, 3);
+    (1, 2);

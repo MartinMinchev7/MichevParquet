@@ -44,4 +44,5 @@ public class JwtServiceImpl implements JwtService {
         byte[] keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
 }

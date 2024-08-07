@@ -5,14 +5,20 @@
 
 <body>
 
-<header th:replace="~{fragments/commons::header}"></header>
+<header th:replace="~{fragments/commons::nav}"></header>
 
 <div class="container-fluid">
     <h1 class="text-center mt-5">All Pads</h1>
-    <div
+    <div class="carticki" style="
+                        display: flex;
+                        justify-content: start;
+                         margin-left: 10em;
+                         flex-wrap: wrap;
+                        ">
+      <div
             th:each="pad: ${pads}"
             th:object="${pad}"
-            class="offers row mx-auto d-flex flex-row justify-content-center">
+            class="element-maper">
         <div class="offer card col-sm-6 col-md-3 col-lg-2 m-1 p-0">
             <div class="card-img-top-wrapper">
                 <img class="card-img-top" th:src="@{${pad.imageUrl}}" alt="Parquet image">
@@ -27,6 +33,7 @@
                 <a class="card-link" th:href="@{/pads/{id}(id=${pad.id})}">Details</a>
             </div>
         </div>
+     </div>
     </div>
 </div>
 </body>

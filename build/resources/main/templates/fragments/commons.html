@@ -53,12 +53,12 @@
                             Our Parquets
                         </a>
                         <div class="dropdown-menu menu1" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/parquets/model/vinyl}">Vinyl</a>
-                            <a class="dropdown-item" th:href="@{/parquets/model/classic}">Classic</a>
-                            <a class="dropdown-item" th:href="@{/parquets/model/three-layered}">Three Layered</a>
-                            <a class="dropdown-item" th:href="@{/parquets/model/laminate}">Laminate</a>
-                            <a class="dropdown-item" th:href="@{/parquets/model/carpet-tiles}">Carpet Tiles</a>
-                            <a class="dropdown-item" th:href="@{/pads/all}">Pads</a>
+                            <a class="dropdown-item" th:href="@{/parquets/model/vinyl}" th:text="#{nav_bar_products_vinyl}">Vinyl</a>
+                            <a class="dropdown-item" th:href="@{/parquets/model/classic}" th:text="#{nav_bar_products_classic}">Classic</a>
+                            <a class="dropdown-item" th:href="@{/parquets/model/three-layered}" th:text="#{nav_bar_products_three_layered}">Three Layered</a>
+                            <a class="dropdown-item" th:href="@{/parquets/model/laminate}" th:text="#{nav_bar_products_laminate}">Laminate</a>
+                            <a class="dropdown-item" th:href="@{/parquets/model/carpet-tiles}" th:text="#{nav_bar_products_carpet_tiles}">Carpet Tiles</a>
+                            <a class="dropdown-item" th:href="@{/pads/all}" th:text="#{nav_bar_products_pads}">Pads</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -114,7 +114,8 @@
                                 </form>
                             </li>
                             <li><a href="#"><img src="/images/favourite.png"></a></li>
-                            <li><a href="#"><img src="/images/search-icon.png"></a></li>
+                            <li><a th:href="@{/users/rename/{id}(id=${#authentication.principal.id})}"><img src="/images/search-icon.png"></a></li>
+<!--                            <li><a th:href="@{/users/rename/{id}(id=${userId})}"><img src="/images/search-icon.png"></a></li>-->
                         </ul>
                     </div>
                     <div></div>

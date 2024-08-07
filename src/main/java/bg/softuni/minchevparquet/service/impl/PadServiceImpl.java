@@ -9,7 +9,10 @@ import bg.softuni.minchevparquet.model.entity.PadModel;
 import bg.softuni.minchevparquet.repository.PadModelRepository;
 import bg.softuni.minchevparquet.repository.PadRepository;
 import bg.softuni.minchevparquet.service.PadService;
+import bg.softuni.minchevparquet.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,6 +47,10 @@ public class PadServiceImpl implements PadService {
 
     @Override
     public List<PadSummaryDTO> getAllPadsSummary() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+
+        System.out.println(authentication);
         return padRepository.findAll()
                 .stream()
                 .map(pad -> modelMapper.map(pad, PadSummaryDTO.class))
