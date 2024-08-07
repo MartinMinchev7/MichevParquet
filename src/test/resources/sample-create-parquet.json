@@ -1,0 +1,8 @@
+{
+  "name": "Test parquet",
+  "model": "CLASSIC",
+  "price": 120.20,
+  "size": 8,
+  "classRate": 10,
+  "imageUrl": "imageUrl"
+}

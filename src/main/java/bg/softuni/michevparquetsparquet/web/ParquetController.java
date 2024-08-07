@@ -5,9 +5,16 @@ import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
 import bg.softuni.michevparquetsparquet.model.entity.Parquet;
 import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 import bg.softuni.michevparquetsparquet.service.ParquetService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +33,8 @@ public class ParquetController {
         this.parquetService = parquetService;
     }
 
+
+
     @GetMapping("/{id}")
     public ResponseEntity<ParquetDTO> findById(@PathVariable("id") Long id) {
         return ResponseEntity
@@ -39,6 +48,7 @@ public class ParquetController {
 //    }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<ParquetDTO> deleteById(@PathVariable("id") Long id) {
         parquetService.deleteParquet(id);
         return ResponseEntity.noContent().build();
@@ -54,7 +64,7 @@ public class ParquetController {
 
     @PostMapping
     public ResponseEntity<ParquetDTO> createParquet(@RequestBody AddParquetDTO addParquetDTO) {
-        LOGGER.info("Going to create an offer {}", addParquetDTO);
+
 
         ParquetDTO parquetDTO = parquetService.createParquet(addParquetDTO);
         return ResponseEntity.created(

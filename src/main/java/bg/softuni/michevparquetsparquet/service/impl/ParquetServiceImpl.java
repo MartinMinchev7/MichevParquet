@@ -9,6 +9,9 @@ import bg.softuni.michevparquetsparquet.repository.ModelRepository;
 import bg.softuni.michevparquetsparquet.repository.ParquetRepository;
 import bg.softuni.michevparquetsparquet.service.ParquetService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -40,7 +43,7 @@ public class ParquetServiceImpl implements ParquetService {
             throw new IllegalArgumentException("Parquet with the same name already exists!");
         }
 
-        Optional<Model> byModelName = modelRepository.findByModelName(addParquetDTO.modelName());
+        Optional<Model> byModelName = modelRepository.findByModelName(ModelName.valueOf(addParquetDTO.modelName()));
 
         if (byModelName.isEmpty()) {
             throw new IllegalArgumentException("Model not found!");

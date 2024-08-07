@@ -16,7 +16,6 @@ public class Parquet {
     private String name;
 
     @ManyToOne
-    @Column(nullable = false)
     private Model model;
 
     @Column(nullable = false)
@@ -31,8 +30,7 @@ public class Parquet {
     @Column(nullable = false, unique = true)
     private String imageUrl;
 
-    @NotNull
-    @Column
+    @Column(nullable = false)
     private Instant created = Instant.now();
 
     public Parquet() {}
