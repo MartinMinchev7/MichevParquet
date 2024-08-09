@@ -2,6 +2,7 @@ package bg.softuni.michevparquetsparquet.web;
 
 import bg.softuni.michevparquetsparquet.model.dto.AddParquetDTO;
 import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
+import bg.softuni.michevparquetsparquet.model.dto.RenameParquetDTO;
 import bg.softuni.michevparquetsparquet.model.entity.Parquet;
 import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 import bg.softuni.michevparquetsparquet.service.ParquetService;
@@ -26,7 +27,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/parquets")
 public class ParquetController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ParquetController.class);
     private final ParquetService parquetService;
 
     public ParquetController(ParquetService parquetService) {
@@ -41,14 +41,15 @@ public class ParquetController {
                 .ok(parquetService.getParquetById(id));
     }
 
-//    @GetMapping("/add-to-favourites/{id}")
-//    public ResponseEntity<Optional<Parquet>> findParquetById(@PathVariable("id") Long id) {
-//        return ResponseEntity
-//                .ok(parquetService.getParquetEntityById(id));
-//    }
+    @PatchMapping("/rename/{id}")
+    public ResponseEntity<ParquetDTO> renameParquet(@PathVariable("id") Long id, @RequestBody RenameParquetDTO renameDTO) {
+        return ResponseEntity
+                .ok(parquetService.renameParquet(id, renameDTO));
+    }
+
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<ParquetDTO> deleteById(@PathVariable("id") Long id) {
         parquetService.deleteParquet(id);
         return ResponseEntity.noContent().build();
@@ -111,10 +112,4 @@ public class ParquetController {
         );
     }
 
-//    @GetMapping("/model/{model}")
-//    public ResponseEntity<List<ParquetDTO>> getParquetsByModel(@PathVariable("model") ModelName model) {
-//        return ResponseEntity.ok(
-//                parquetService.getParquetsByModel(model)
-//        );
-//    }
 }

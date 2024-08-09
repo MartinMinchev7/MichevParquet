@@ -2,6 +2,7 @@ package bg.softuni.michevparquetsparquet.service.impl;
 
 import bg.softuni.michevparquetsparquet.model.dto.AddParquetDTO;
 import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
+import bg.softuni.michevparquetsparquet.model.dto.RenameParquetDTO;
 import bg.softuni.michevparquetsparquet.model.entity.Model;
 import bg.softuni.michevparquetsparquet.model.entity.Parquet;
 import bg.softuni.michevparquetsparquet.model.enums.ModelName;
@@ -76,6 +77,21 @@ public class ParquetServiceImpl implements ParquetService {
     }
 
     @Override
+    public ParquetDTO renameParquet(Long id, RenameParquetDTO renameParquet) {
+        Parquet parquet = parquetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not found!"));
+        Optional<Parquet> byName = parquetRepository.findByName(renameParquet.name());
+
+        if (byName.isPresent()) {
+            throw new IllegalArgumentException("Existing parquet name.");
+        }
+
+        parquet.setName(renameParquet.name());
+        parquetRepository.save(parquet);
+
+        return map(parquet);
+    }
+
+    @Override
     public List<ParquetDTO> getAllParquets() {
         return parquetRepository
                .findAll()
@@ -145,11 +161,6 @@ public class ParquetServiceImpl implements ParquetService {
 
         parquetRepository.deleteOldParquets(deleteBefore);
     }
-
-//    @Override
-//    public Optional<Parquet> getParquetEntityById(Long id) {
-//        return parquetRepository.findById(id);
-//    }
 
 
     private static ParquetDTO map(Parquet parquet) {

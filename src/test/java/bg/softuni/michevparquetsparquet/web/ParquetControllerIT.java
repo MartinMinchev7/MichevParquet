@@ -1,10 +1,12 @@
 package bg.softuni.michevparquetsparquet.web;
 
+import bg.softuni.michevparquetsparquet.model.dto.ParquetDTO;
 import bg.softuni.michevparquetsparquet.model.entity.Model;
 import bg.softuni.michevparquetsparquet.model.entity.Parquet;
 import bg.softuni.michevparquetsparquet.model.enums.ModelName;
 import bg.softuni.michevparquetsparquet.repository.ModelRepository;
 import bg.softuni.michevparquetsparquet.repository.ParquetRepository;
+import bg.softuni.michevparquetsparquet.service.ParquetService;
 import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -12,14 +14,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -39,7 +42,10 @@ public class ParquetControllerIT {
     private ParquetRepository parquetRepository;
 
     @Autowired
-    ModelRepository modelRepository;
+    private ModelRepository modelRepository;
+
+    @Autowired
+    private ParquetService parquetService;
 
     @Autowired
     private MockMvc mockMvc;
@@ -47,6 +53,7 @@ public class ParquetControllerIT {
     @AfterEach
     public void tearDown() {
         parquetRepository.deleteAll();
+        modelRepository.deleteAll();
     }
 
     @Test
@@ -67,6 +74,16 @@ public class ParquetControllerIT {
 
     @Test
     public void testCreateParquet() throws Exception {
+        Model model;
+        try {
+            model = new Model();
+            model.setModelName(ModelName.CLASSIC);
+            model.setDescription("test description");
+            modelRepository.saveAndFlush(model);
+        } catch (DataIntegrityViolationException e) {
+            model = modelRepository.findByModelName(ModelName.CLASSIC).orElseThrow(() -> new Exception("Model not found"));
+        }
+
         MvcResult result = mockMvc.perform(post("/parquets")
                .contentType(MediaType.APPLICATION_JSON)
                .content("""
@@ -113,6 +130,177 @@ public class ParquetControllerIT {
                 parquetRepository.findById(actualEntity.getId()).isEmpty()
         );
     }
+
+    @Test
+    public void testGetVinylParquets() throws Exception {
+        Model model;
+        try {
+            model = new Model();
+            model.setModelName(ModelName.VINYL);
+            model.setDescription("test description");
+            modelRepository.saveAndFlush(model);
+        } catch (DataIntegrityViolationException e) {
+            model = modelRepository.findByModelName(ModelName.VINYL).orElseThrow(() -> new Exception("Model not found"));
+        }
+
+        Parquet parquet = createTestParquet();
+        parquet.setModel(model);
+
+        parquetRepository.save(parquet);
+
+        List<ParquetDTO> vinylParquets = parquetService.getVinylParquets();
+
+        String expectedJson = "[{'id':" + vinylParquets.getFirst().id() + "," +
+                "'name':'meric'," +
+                "'size':8," +
+                "'classRate':20," +
+                "'price':100," +
+                "'imageUrl':'imageUrl'," +
+                "'model':{'modelName':'VINYL','description':'test description'}}]";
+
+        mockMvc.perform(get("/parquets/model/vinyl")
+               .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedJson));
+
+    }
+
+    @Test
+    public void testGetClassicParquets() throws Exception {
+        Model model;
+        try {
+            model = new Model();
+            model.setModelName(ModelName.CLASSIC);
+            model.setDescription("test description");
+            modelRepository.saveAndFlush(model);
+        } catch (DataIntegrityViolationException e) {
+            model = modelRepository.findByModelName(ModelName.CLASSIC).orElseThrow(() -> new Exception("Model not found"));
+        }
+
+        Parquet parquet = createTestParquet();
+        parquet.setModel(model);
+
+        parquetRepository.save(parquet);
+
+        List<ParquetDTO> classicParquets = parquetService.getClassicParquets();
+
+        String expectedJson = "[{'id':" + classicParquets.getFirst().id() + "," +
+                "'name':'meric'," +
+                "'size':8," +
+                "'classRate':20," +
+                "'price':100," +
+                "'imageUrl':'imageUrl'," +
+                "'model':{'modelName':'CLASSIC','description':'test description'}}]";
+
+        mockMvc.perform(get("/parquets/model/classic")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedJson));
+
+    }
+
+    @Test
+    public void testGetThreeLayeredParquets() throws Exception {
+        Model model;
+        try {
+            model = new Model();
+            model.setModelName(ModelName.THREE_LAYERED);
+            model.setDescription("test description");
+            modelRepository.saveAndFlush(model);
+        } catch (DataIntegrityViolationException e) {
+            model = modelRepository.findByModelName(ModelName.THREE_LAYERED).orElseThrow(() -> new Exception("Model not found"));
+        }
+
+        Parquet parquet = createTestParquet();
+        parquet.setModel(model);
+
+        parquetRepository.save(parquet);
+
+        List<ParquetDTO> threeLayeredParquets = parquetService.getThreeLayeredParquets();
+
+        String expectedJson = "[{'id':" + threeLayeredParquets.getFirst().id() + "," +
+                "'name':'meric'," +
+                "'size':8," +
+                "'classRate':20," +
+                "'price':100," +
+                "'imageUrl':'imageUrl'," +
+                "'model':{'modelName':'THREE_LAYERED','description':'test description'}}]";
+
+        mockMvc.perform(get("/parquets/model/three-layered")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedJson));
+
+    }
+
+    @Test
+    public void testGetLaminateParquets() throws Exception {
+        Model model;
+        try {
+            model = new Model();
+            model.setModelName(ModelName.LAMINATE);
+            model.setDescription("test description");
+            modelRepository.saveAndFlush(model);
+        } catch (DataIntegrityViolationException e) {
+            model = modelRepository.findByModelName(ModelName.LAMINATE).orElseThrow(() -> new Exception("Model not found"));
+        }
+
+        Parquet parquet = createTestParquet();
+        parquet.setModel(model);
+
+        parquetRepository.save(parquet);
+
+        List<ParquetDTO> laminateParquets = parquetService.getLaminateParquets();
+
+        String expectedJson = "[{'id':" + laminateParquets.getFirst().id() + "," +
+                "'name':'meric'," +
+                "'size':8," +
+                "'classRate':20," +
+                "'price':100," +
+                "'imageUrl':'imageUrl'," +
+                "'model':{'modelName':'LAMINATE','description':'Laminate parquet is a versatile and cost-effective flooring option that mimics the look of traditional wood parquet.'}}]";
+
+        mockMvc.perform(get("/parquets/model/laminate")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedJson));
+
+    }
+
+    @Test
+    public void testGetCarpetTilesParquets() throws Exception {
+        Model model;
+        try {
+            model = new Model();
+            model.setModelName(ModelName.CARPET_TILES);
+            model.setDescription("test description");
+            modelRepository.saveAndFlush(model);
+        } catch (DataIntegrityViolationException e) {
+            model = modelRepository.findByModelName(ModelName.CARPET_TILES).orElseThrow(() -> new Exception("Model not found"));
+        }
+
+        Parquet parquet = createTestParquet();
+        parquet.setModel(model);
+
+        parquetRepository.save(parquet);
+
+        List<ParquetDTO> carpetTilesParquets = parquetService.getCarpetTilesParquets();
+
+        String expectedJson = "[{'id':" + carpetTilesParquets.getFirst().id() + "," +
+                "'name':'meric'," +
+                "'size':8," +
+                "'classRate':20," +
+                "'price':100," +
+                "'imageUrl':'imageUrl'," +
+                "'model':{'modelName':'CARPET_TILES','description':'test description'}}]";
+
+        mockMvc.perform(get("/parquets/model/carpet-tiles")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expectedJson));
+
+    }
+
 
     private Parquet createTestParquet() {
         Parquet parquet = new Parquet();
