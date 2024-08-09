@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="container">
+    <h1>Rename User</h1>
+    <form
+            id="addRenameUserForm"
+            th:method="patch"
+            th:action="@{/users/rename/{id}(id=${userId})}"
+            th:object="${renameData}"
+    >
+        <label for="firstName">First name:</label>
+        <input
+                th:field="*{firstName}"
+                type="text"
+                id="firstName"
+                name="firstName"
+        >
+
+        <label for="lastName">Last name:</label>
+        <input
+                th:field="*{lastName}"
+                type="text"
+                id="lastName"
+                name="lastName"
+        >
+
+        <button type="submit" class="btn btn-primary btn-block w-50">Rename</button>
+        <a type="submit" class="btn btn-primary btn-block w-50" th:href="@{/}">Back</a>
+    </form>
+</div>
+</body>
+</html>
