@@ -2,6 +2,7 @@ package bg.softuni.minchevparquet.web;
 
 import bg.softuni.minchevparquet.model.dto.AddParquetDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
+import bg.softuni.minchevparquet.model.dto.ParquetRenameDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetSummaryDTO;
 import bg.softuni.minchevparquet.model.enums.ModelName;
 import bg.softuni.minchevparquet.model.user.MinchevParquetUserDetails;
@@ -26,13 +27,9 @@ import java.util.List;
 public class ParquetController {
 
     private final ParquetService parquetService;
-    private final UserService userService;
-    private final ModelMapper modelMapper;
 
-    public ParquetController(ParquetService parquetService, UserService userService, ModelMapper modelMapper) {
+    public ParquetController(ParquetService parquetService) {
         this.parquetService = parquetService;
-        this.userService = userService;
-        this.modelMapper = modelMapper;
     }
 
     @ModelAttribute("allModelNames")
@@ -83,7 +80,6 @@ public class ParquetController {
     public String parquetDetails(@PathVariable("id") Long id, Model model) {
 
         model.addAttribute("parquetDetails", parquetService.getParquetDetails(id));
-
         return "details";
     }
 
@@ -103,37 +99,33 @@ public class ParquetController {
         return "redirect:/parquets/all";
     }
 
-//    @GetMapping("/add-to-favourites/{parquetId}")
-//    public String addToFavourite(@PathVariable("parquetId") Long parquetId,
-//                                 @AuthenticationPrincipal MinchevParquetUserDetails user, Model model) {
-//
-//        if (user == null) {
-//            throw new IllegalStateException("User must be authenticated to add parquet to favourites.");
-//        }
-//        if (parquetId == null) {
-//            throw new IllegalArgumentException("Parquet ID must be provided.");
-//        }
-//
-//
-//        parquetService.addToFavourite(user.getUuid(), parquetId);
-//
-////        List<ParquetDetailsDTO> parquets = userService.findFavourites(user.getUuid())
-////                .stream()
-////                .map(parquet -> modelMapper.map(parquet, ParquetDetailsDTO.class) )
-////                .toList();
-////
-////        model.addAttribute("parquets", parquets);
-//
-//        return "redirect:/details";
-//    }
+    @GetMapping("/rename/{id}")
+    public String update(@PathVariable("id") Long id, Model model) {
 
-//    @GetMapping("/model/{model}")
-//    public String modelParquet(@PathVariable("model") ModelName modelName, Model model) {
-//
-//        model.addAttribute("parquetModelName", parquetService.getAllParquetsByModelNameSummary(modelName));
-//
-//        return "vinyl-parquet";
-//    }
+        if (!model.containsAttribute("parquetRenameData")) {
+            model.addAttribute("parquetRenameData", new ParquetRenameDTO());
+        }
+
+        return "change-parquet-name";
+    }
+
+    @PatchMapping("/rename/{id}")
+    public String renameParquet(@PathVariable("id") Long id,
+                                @Valid ParquetRenameDTO renameDTO,
+                                BindingResult bindingResult,
+                                RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("parquetRenameData", renameDTO);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.renameDTO", bindingResult);
+            return "redirect:parquets/update/" + id;
+        }
+
+        parquetService.renameParquet(id, renameDTO);
+
+        return "redirect:/parquets/all";
+    }
 
     @GetMapping("/model/vinyl")
     public String viewAllVinylParquets(Model model) {

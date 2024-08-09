@@ -113,9 +113,9 @@
                                     <input type="submit" class="btn btn-link text-white" value="Logout"/>
                                 </form>
                             </li>
-                            <li><a href="#"><img src="/images/favourite.png"></a></li>
-                            <li><a th:href="@{/users/rename/{id}(id=${#authentication.principal.id})}"><img src="/images/search-icon.png"></a></li>
-<!--                            <li><a th:href="@{/users/rename/{id}(id=${userId})}"><img src="/images/search-icon.png"></a></li>-->
+                            <li sec:authorize="isAuthenticated()">
+                                <a th:href="@{/users/rename/{id}(id=${#authentication.principal.id})}"><img src="/images/search-icon.png"></a>
+                            </li>
                         </ul>
                     </div>
                     <div></div>
@@ -187,7 +187,7 @@
                 <div class="col-lg-8 col-sm-12 padding_0">
                     <div class="map_main">
                         <div class="map-responsive">
-                            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France" width="600" height="400" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                            <iframe src="https://www.google.com/maps/@41.5677519,24.7333292,3a,75y,171.52h,83.34t/data=!3m6!1e1!3m4!1srhFy9MvPfRUh9xa1lJXotQ!2e0!7i16384!8i8192?coh=205409&entry=ttu" width="600" height="400" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
                         </div>
                     </div>
                 </div>
@@ -197,8 +197,8 @@
                     <div class="call_text"><a href="#section_contact"><img src="/images/mail-icon.png"><span class="padding_left_0" th:text="#{footer_section_text_3}">parquets@gmail.com</span></a></div>
                     <div class="social_icon">
                         <ul>
-                            <li><a href="#"><img src="/images/fb-icon1.png"></a></li>
-                            <li><a href="#"><img src="/images/instagram-icon.png"></a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=100063498727242&locale=bg_BG"><img src="/images/fb-icon1.png"></a></li>
+                            <li><a href="https://www.instagram.com/parketi.minchev/"><img src="/images/instagram-icon.png"></a></li>
                         </ul>
                     </div>
 <!--                    <label>-->

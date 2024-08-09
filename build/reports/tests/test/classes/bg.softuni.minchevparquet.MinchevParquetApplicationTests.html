@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.010s</div>
+<div class="counter">0.009s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 <a name="contextLoads()"></a>
 <h3 class="failures">contextLoads()</h3>
 <span class="code">
-<pre>java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@f6120a9a testClass = bg.softuni.minchevparquet.MinchevParquetApplicationTests, locations = [], classes = [bg.softuni.minchevparquet.MinchevParquetApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@cc39152a, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@a0d34a7d, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@f57fe0, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@af046bf7, org.springframework.boot.test.context.SpringBootTestAnnotation@11c42716], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+<pre>java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@655b0e15 testClass = bg.softuni.minchevparquet.MinchevParquetApplicationTests, locations = [], classes = [bg.softuni.minchevparquet.MinchevParquetApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@9e93e9aa, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@de0fb5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2aea7df4, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4e663b38, org.springframework.boot.test.context.SpringBootTestAnnotation@a779b4b3], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
 	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
@@ -167,7 +167,7 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found:
 </thead>
 <tr>
 <td class="failures">contextLoads()</td>
-<td class="failures">0.010s</td>
+<td class="failures">0.009s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -175,8 +175,8 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found:
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>13:44:48.590 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [bg.softuni.minchevparquet.MinchevParquetApplicationTests]: MinchevParquetApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-13:44:48.700 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration bg.softuni.minchevparquet.MinchevParquetApplication for test class bg.softuni.minchevparquet.MinchevParquetApplicationTests
+<pre>15:45:43.248 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [bg.softuni.minchevparquet.MinchevParquetApplicationTests]: MinchevParquetApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:45:43.354 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration bg.softuni.minchevparquet.MinchevParquetApplication for test class bg.softuni.minchevparquet.MinchevParquetApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -187,28 +187,28 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found:
 
  :: Spring Boot ::                (v3.3.1)
 
-2024-08-06T13:44:49.160+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] b.s.m.MinchevParquetApplicationTests     : Starting MinchevParquetApplicationTests using Java 21.0.3 with PID 18120 (started by Marti in C:\Users\Marti\Desktop\MyFinalProject\MinchevParquet)
-2024-08-06T13:44:49.161+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] b.s.m.MinchevParquetApplicationTests     : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-08-06T13:44:49.975+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-08-06T13:44:50.060+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73 ms. Found 7 JPA repository interfaces.
-2024-08-06T13:44:50.643+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-08-06T13:44:50.720+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-08-06T13:44:50.765+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-08-06T13:44:51.100+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-08-06T13:44:51.133+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-06T13:44:51.363+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (feature not supported)
-2024-08-06T13:44:51.364+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.hsqldb.jdbc.JDBCConnection@be25afc6
-2024-08-06T13:44:51.367+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-06T13:44:52.577+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-08-06T13:44:52.673+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-08-06T13:44:53.604+03:00  WARN 18120 --- [MinchevParquet] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceInitializer' defined in class path resource [bg/softuni/minchevparquet/config/AppConfig.class]: Failed to execute SQL script statement #2 of class path resource [data.sql]: INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `uuid`) VALUES (1, 'maya@mail', 'Maya', 'Mincheva', '375ee7ae558be0ee49ad0671ec6329a1c7e2875374ed8780f6e6a6cceb4e55e1fbc678106a6fa09da8eb349b7cda41f3', '099e0c80-f1ea-471a-b0d3-13ae3990d788')
-2024-08-06T13:44:53.605+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-08-06T13:44:53.607+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-08-06T13:44:53.610+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-08-06T13:44:53.626+03:00  INFO 18120 --- [MinchevParquet] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-08-08T15:45:43.828+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] b.s.m.MinchevParquetApplicationTests     : Starting MinchevParquetApplicationTests using Java 21.0.3 with PID 8488 (started by Marti in C:\Users\Marti\Desktop\MyFinalProject\MinchevParquet)
+2024-08-08T15:45:43.829+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] b.s.m.MinchevParquetApplicationTests     : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-08-08T15:45:44.663+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-08T15:45:44.785+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 7 JPA repository interfaces.
+2024-08-08T15:45:45.362+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-08T15:45:45.433+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-08T15:45:45.475+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-08T15:45:45.801+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-08T15:45:45.833+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-08T15:45:46.067+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (feature not supported)
+2024-08-08T15:45:46.068+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.hsqldb.jdbc.JDBCConnection@b11c46af
+2024-08-08T15:45:46.070+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-08T15:45:47.287+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-08T15:45:47.388+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-08T15:45:48.362+03:00  WARN 8488 --- [MinchevParquet] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceInitializer' defined in class path resource [bg/softuni/minchevparquet/config/AppConfig.class]: Failed to execute SQL script statement #2 of class path resource [data.sql]: INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `uuid`) VALUES (1, 'maya@mail', 'Maya', 'Mincheva', '375ee7ae558be0ee49ad0671ec6329a1c7e2875374ed8780f6e6a6cceb4e55e1fbc678106a6fa09da8eb349b7cda41f3', '099e0c80-f1ea-471a-b0d3-13ae3990d788')
+2024-08-08T15:45:48.363+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-08T15:45:48.365+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-08T15:45:48.366+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-08T15:45:48.379+03:00  INFO 8488 --- [MinchevParquet] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-06T13:44:53.650+03:00 ERROR 18120 --- [MinchevParquet] [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2024-08-08T15:45:48.403+03:00 ERROR 8488 --- [MinchevParquet] [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceInitializer' defined in class path resource [bg/softuni/minchevparquet/config/AppConfig.class]: Failed to execute SQL script statement #2 of class path resource [data.sql]: INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`, `uuid`) VALUES (1, 'maya@mail', 'Maya', 'Mincheva', '375ee7ae558be0ee49ad0671ec6329a1c7e2875374ed8780f6e6a6cceb4e55e1fbc678106a6fa09da8eb349b7cda41f3', '099e0c80-f1ea-471a-b0d3-13ae3990d788')
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
@@ -348,9 +348,9 @@ Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found:
 	at org.hsqldb.Session.execute(Unknown Source) ~[hsqldb-2.7.3.jar:2.7.3]
 	... 117 common frames omitted
 
-2024-08-06T13:44:53.674+03:00  WARN 18120 --- [MinchevParquet] [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [bg.softuni.minchevparquet.MinchevParquetApplicationTests@433ff0d8]
+2024-08-08T15:45:48.432+03:00  WARN 8488 --- [MinchevParquet] [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [bg.softuni.minchevparquet.MinchevParquetApplicationTests@4352b12d]
 
-java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@f6120a9a testClass = bg.softuni.minchevparquet.MinchevParquetApplicationTests, locations = [], classes = [bg.softuni.minchevparquet.MinchevParquetApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@cc39152a, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@a0d34a7d, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@f57fe0, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@af046bf7, org.springframework.boot.test.context.SpringBootTestAnnotation@11c42716], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@655b0e15 testClass = bg.softuni.minchevparquet.MinchevParquetApplicationTests, locations = [], classes = [bg.softuni.minchevparquet.MinchevParquetApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [&quot;org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true&quot;], contextCustomizers = [org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@9e93e9aa, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@de0fb5c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2aea7df4, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4e663b38, org.springframework.boot.test.context.SpringBootTestAnnotation@a779b4b3], resourceBasePath = &quot;src/main/webapp&quot;, contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180) ~[spring-test-6.1.10.jar:6.1.10]
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130) ~[spring-test-6.1.10.jar:6.1.10]
 	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191) ~[spring-test-6.1.10.jar:6.1.10]
@@ -541,7 +541,7 @@ Unconditional classes:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.8</a> at Aug 6, 2024, 1:44:53 PM</p>
+<a href="http://www.gradle.org">Gradle 8.8</a> at Aug 8, 2024, 3:45:48 PM</p>
 </div>
 </div>
 </body>

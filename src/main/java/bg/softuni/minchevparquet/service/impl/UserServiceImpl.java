@@ -1,8 +1,7 @@
 package bg.softuni.minchevparquet.service.impl;
 
-import bg.softuni.minchevparquet.model.dto.RenameDTO;
+import bg.softuni.minchevparquet.model.dto.UserRenameDTO;
 import bg.softuni.minchevparquet.model.dto.UserRegisterDTO;
-import bg.softuni.minchevparquet.model.entity.Parquet;
 import bg.softuni.minchevparquet.model.entity.User;
 import bg.softuni.minchevparquet.model.entity.UserRole;
 import bg.softuni.minchevparquet.model.enums.UserRoleEnum;
@@ -16,10 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -53,11 +49,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void renameUser(User user, RenameDTO renameDTO) {
-        user.setFirstName(renameDTO.getFirstName());
-        user.setLastName(renameDTO.getLastName());
+    public void renameUser(User user, UserRenameDTO userRenameDTO) {
+        if (userRenameDTO.getFirstName() != null) {
+            user.setFirstName(userRenameDTO.getFirstName());
+        }
+        if (userRenameDTO.getLastName()!= null) {
+            user.setLastName(userRenameDTO.getLastName());
+        }
         userRepository.save(user);
-
     }
 
     @Override

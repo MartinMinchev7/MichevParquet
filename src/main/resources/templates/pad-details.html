@@ -24,36 +24,19 @@
                     <div class="card-text">• Price: <span id="price" th:text="*{price}">Price</span></div>
                     <div class="card-text">• Model: <span th:text="*{padModel.getPadModelName()}">Model</span></div>
                     <div class="card-text">• Size: <span th:text="*{size}">Size</span></div>
-                    <!--                    <div class="card-text">• Currency:-->
-                    <!--                        <select id="currency">-->
-                    <!--                            <option-->
-                    <!--                                    th:each="currency: *{allCurrencies}"-->
-                    <!--                                    th:value="${currency}"-->
-                    <!--                                    th:selected="${currency} == 'BGN'"-->
-                    <!--                                    th:text="${currency}"-->
-                    <!--                            >-->
-
-                    <!--                            </option>-->
-                    <!--                        </select>-->
-                    <!--                    </div>-->
                 </li>
             </ul>
-            <!--            <input type="hidden" id="priceInBGN" th:value="*{price}"/>-->
             <div class="card-body" sec:authorize="hasRole('ADMIN')">
                 <form th:method="delete"
                       th:action="@{/pads/delete/{id}(id=*{id})}">
                     <input class="btn btn-link" type="submit" value="Delete"/>
                 </form>
             </div>
-            <!--            <a class="btn" type="submit" th:href="@{/}">Back</a>-->
         </div>
         <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
             <img th:src="@{${padDetails.imageUrl}}" class="card-img-top"  alt="Pad image">
         </div>
     </div>
 </div>
-
-<!--<script th:src="@{/js/currency.js}"></script>-->
-
 </body>
 </html>

@@ -1,13 +1,15 @@
 package bg.softuni.minchevparquet.web;
 
-import bg.softuni.minchevparquet.model.dto.RenameDTO;
+import bg.softuni.minchevparquet.model.dto.UserRenameDTO;
 import bg.softuni.minchevparquet.model.dto.UserLoginDTO;
 import bg.softuni.minchevparquet.model.entity.User;
-import bg.softuni.minchevparquet.model.user.MinchevParquetUserDetails;
 import bg.softuni.minchevparquet.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -49,17 +51,26 @@ public class LoginController {
             throw new IllegalArgumentException("User not found");
         }
 
-        ModelAndView modelAndView = new ModelAndView("rename");
+        ModelAndView modelAndView = new ModelAndView("rename-user");
 
-        modelAndView.addObject("renameData", new RenameDTO());
+        modelAndView.addObject("renameData", new UserRenameDTO());
         modelAndView.addObject("userId", user.get().getId());
 
         return modelAndView;
     }
 
-    @PostMapping("/rename/{id}")
-    public String renameUser(@RequestBody RenameDTO renameDTO,
-                                    @PathVariable Long id) {
+    @PatchMapping("/rename/{id}")
+    public String renameUser(@PathVariable Long id,
+                             @Valid UserRenameDTO userRenameDTO,
+                             BindingResult bindingResult,
+                             RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("renameData", userRenameDTO);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.renameDTO", bindingResult);
+            return "redirect:/users/rename/" + id;
+        }
 
         Optional<User> user = userService.getUserDetails(id);
 
@@ -67,7 +78,7 @@ public class LoginController {
             throw new IllegalArgumentException("User not found");
         }
 
-        userService.renameUser(user.get(), renameDTO);
+        userService.renameUser(user.get(), userRenameDTO);
 
         return "redirect:/";
     }

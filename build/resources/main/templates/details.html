@@ -27,40 +27,23 @@
                     <div class="card-text">• Size: <span th:text="*{size}">Size</span></div>
                     <div class="card-text">• ClassRate: <span th:text="*{classRate}">Class Rate</span></div>
                     <div class="card-text">• Description: <span th:text="*{model.getDescription()}">Description</span></div>
-<!--                    <div class="card-text">• Currency:-->
-<!--                        <select id="currency">-->
-<!--                            <option-->
-<!--                                    th:each="currency: *{allCurrencies}"-->
-<!--                                    th:value="${currency}"-->
-<!--                                    th:selected="${currency} == 'BGN'"-->
-<!--                                    th:text="${currency}"-->
-<!--                            >-->
-
-<!--                            </option>-->
-<!--                        </select>-->
-<!--                    </div>-->
                 </li>
             </ul>
-<!--            <input type="hidden" id="priceInBGN" th:value="*{price}"/>-->
             <div class="card-body" sec:authorize="hasRole('ADMIN')">
                 <form th:method="delete"
                       th:action="@{/parquets/delete/{id}(id=*{id})}">
                     <input class="btn btn-link" type="submit" value="Delete"/>
                 </form>
                 <form th:method="get"
-                      th:action="@{/parquets/add-to-favourites/{id}(id=*{id})}">
-                    <input class="btn btn-link" type="submit" value="Add to favourite"/>
+                      th:action="@{/parquets/rename/{id}(id=*{id})}">
+                    <input class="btn btn-link" type="submit" value="Update"/>
                 </form>
             </div>
-<!--            <a class="btn" type="submit" th:href="@{/}">Back</a>-->
         </div>
         <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
             <img th:src="@{${parquetDetails.imageUrl}}" class="card-img-top"  alt="Parquet image">
         </div>
     </div>
 </div>
-
-<!--<script th:src="@{/js/currency.js}"></script>-->
-
 </body>
 </html>

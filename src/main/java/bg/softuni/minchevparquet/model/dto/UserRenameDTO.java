@@ -1,6 +1,6 @@
 package bg.softuni.minchevparquet.model.dto;
 
-public class RenameDTO {
+public class UserRenameDTO {
     private String firstName;
     private String lastName;
 

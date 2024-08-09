@@ -2,6 +2,7 @@ package bg.softuni.minchevparquet.service.impl;
 
 import bg.softuni.minchevparquet.model.dto.AddParquetDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
+import bg.softuni.minchevparquet.model.dto.ParquetRenameDTO;
 import bg.softuni.minchevparquet.model.dto.ParquetSummaryDTO;
 import bg.softuni.minchevparquet.model.entity.Parquet;
 import bg.softuni.minchevparquet.model.entity.User;
@@ -50,6 +51,17 @@ public class ParquetServiceImpl implements ParquetService {
     }
 
     @Override
+    public void renameParquet(Long id, ParquetRenameDTO renameDTO) {
+        parquetRestClient
+                .patch()
+                .uri("http://localhost:8081/parquets/rename/{id}", id)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(renameDTO)
+                .retrieve();
+
+    }
+
+    @Override
     public ParquetDetailsDTO getParquetDetails(Long id) {
         return parquetRestClient
                 .get()
@@ -59,39 +71,7 @@ public class ParquetServiceImpl implements ParquetService {
                 .body(ParquetDetailsDTO.class);
     }
 
-    @Override
-    public Parquet getParquet(Long id) {
-        return parquetRestClient
-                .get()
-                .uri("http://localhost:8081/parquets/add-to-favourites/{id}", id)
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .body(Parquet.class);
-    }
 
-    @Override
-    public void addToFavourite(UUID uuid, Long parquetId) {
-        Optional<User> byUuid = userRepository.findByUuid(uuid);
-
-        if (byUuid.isEmpty()) {
-            return;
-        }
-
-        ParquetDetailsDTO parquetDetails = getParquetDetails(parquetId);
-
-        Parquet parquet = new Parquet();
-        parquet.setId(parquetDetails.id());
-        parquet.setName(parquetDetails.name());
-        parquet.setModel(parquetDetails.model());
-        parquet.setSize(parquetDetails.size());
-        parquet.setClassRate(parquetDetails.classRate());
-        parquet.setPrice(parquetDetails.price());
-        parquet.setImageUrl(parquetDetails.imageUrl());
-
-        byUuid.get().addFavourite(parquet);
-
-        userRepository.save(byUuid.get());
-    }
 
     @Override
     public List<ParquetSummaryDTO> getAllParquetsSummary() {
@@ -103,15 +83,6 @@ public class ParquetServiceImpl implements ParquetService {
                 .body(new ParameterizedTypeReference<>() {});
     }
 
-//    @Override
-//    public List<ParquetSummaryDTO> getAllParquetsByModelNameSummary(ModelName modelName) {
-//        return parquetRestClient
-//                .get()
-//                .uri("http://localhost:8081/parquets/{model}", modelName)
-//                .accept(MediaType.APPLICATION_JSON)
-//                .retrieve()
-//                .body(new ParameterizedTypeReference<>() {});
-//    }
 
     @Override
     public List<ParquetDetailsDTO> getAllVinylParquets() {

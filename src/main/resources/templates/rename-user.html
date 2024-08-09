@@ -10,7 +10,7 @@
     <h1>Rename User</h1>
     <form
             id="addRenameUserForm"
-            th:method="post"
+            th:method="patch"
             th:action="@{/users/rename/{id}(id=${userId})}"
             th:object="${renameData}"
     >
