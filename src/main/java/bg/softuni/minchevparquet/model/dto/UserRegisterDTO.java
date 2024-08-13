@@ -16,10 +16,10 @@ public class UserRegisterDTO {
     @Email
     private String email;
     @NotEmpty
-    @Size(min = 3)
+    @Size(min = 3, max = 100)
     private String password;
     @NotEmpty
-    @Size(min = 3)
+    @Size(min = 3, max = 100)
     private String confirmPassword;
 
     public @NotBlank @Size(min = 2, max = 20) String getFirstName() {

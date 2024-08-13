@@ -67,8 +67,8 @@ public class ParquetController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("parquetData", addParquetDTO);
             redirectAttributes.addFlashAttribute(
-                    "org.springframework.validation.BindingResult.addParquetDTO", bindingResult);
-            return "redirect:/add-parquet";
+                    "org.springframework.validation.BindingResult.parquetData", bindingResult);
+            return "redirect:/parquets/add";
         }
 
         parquetService.createParquet(addParquetDTO);

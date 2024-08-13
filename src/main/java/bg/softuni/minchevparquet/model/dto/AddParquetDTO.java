@@ -12,10 +12,13 @@ public class AddParquetDTO {
     @NotNull
     @Enumerated(EnumType.STRING)
     private ModelName modelName;
+    @NotNull
     @Positive
     private Integer size;
+    @NotNull
     @Positive
     private Integer classRate;
+    @NotNull
     @Positive
     private Double price;
     @NotBlank

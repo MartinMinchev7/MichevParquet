@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -19,10 +20,14 @@ public class RegisterController {
     public RegisterController(UserService userService) {
         this.userService = userService;
     }
+    @ModelAttribute("registerDTO")
+    public UserRegisterDTO registerDTO() {
+        return new UserRegisterDTO();
+    }
+
 
     @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("registerData", new UserRegisterDTO());
+    public String register() {
         return "register";
     }
 
@@ -31,9 +36,9 @@ public class RegisterController {
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors() || !data.getConfirmPassword().equals(data.getPassword())) {
-            redirectAttributes.addFlashAttribute("registerData", data);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.UserRegisterDTO", bindingResult);
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("registerDTO", data);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerDTO", bindingResult);
             return "redirect:/users/register";
         }
 

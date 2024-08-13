@@ -1,14 +1,15 @@
 package bg.softuni.minchevparquet.config;
 
+import bg.softuni.minchevparquet.model.entity.User;
+import bg.softuni.minchevparquet.model.entity.UserRole;
+import bg.softuni.minchevparquet.model.enums.UserRoleEnum;
+import bg.softuni.minchevparquet.repository.UserRepository;
 import bg.softuni.minchevparquet.repository.UserRoleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.jdbc.datasource.init.DataSourceInitializer;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.sql.DataSource;
 
 @Configuration
 public class AppConfig {
@@ -18,20 +19,34 @@ public class AppConfig {
         return new ModelMapper();
     }
 
+
     @Bean
-    public DataSourceInitializer dataSourceInitializer(DataSource dataSource,
-                                                       UserRoleRepository userRoleRepository,
-                                                       ResourceLoader resourceLoader) {
+    public User dataSourceInitializer(UserRepository userRepository,
+                                      UserRoleRepository userRoleRepository,
+                                      PasswordEncoder passwordEncoder) {
 
-        DataSourceInitializer initializer = new DataSourceInitializer();
-        initializer.setDataSource(dataSource);
+        if (userRepository.count() == 0) {
 
-        if (userRoleRepository.count() == 0) {
-            ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-            populator.addScript(resourceLoader.getResource("classpath:data.sql"));
-            initializer.setDatabasePopulator(populator);
+            UserRole client = new UserRole();
+            client.setRole(UserRoleEnum.CLIENT);
+            client.setId(1L);
+            UserRole admin = new UserRole();
+            admin.setRole(UserRoleEnum.ADMIN);
+            admin.setId(2L);
+            userRoleRepository.save(client);
+            userRoleRepository.save(admin);
+
+            User user = new User();
+
+            user.setFirstName("Maya");
+            user.setLastName("Mincheva");
+            user.setEmail("maya@mail");
+            user.setPassword(passwordEncoder.encode("1234"));
+            user.getRoles().addAll(userRoleRepository.findAll());
+            return userRepository.save(user);
         }
 
-        return initializer;
+        return null;
     }
+
 }

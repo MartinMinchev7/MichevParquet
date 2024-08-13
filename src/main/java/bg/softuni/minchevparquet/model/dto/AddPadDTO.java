@@ -12,8 +12,10 @@ public class AddPadDTO {
    @NotNull
    @Enumerated(EnumType.STRING)
    private PadModelName padModelName;
+   @NotNull
    @Positive
    private Integer size;
+   @NotNull
    @Positive
    private Double price;
    @NotBlank

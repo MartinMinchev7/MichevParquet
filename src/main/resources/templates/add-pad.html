@@ -18,6 +18,7 @@
 
         <label for="padModelName">Model:</label>
         <select
+                th:errorclass="'is-invalid'"
                 class="browser-default custom-select"
                 id="padModelName"
                 name="padModelName"
@@ -26,31 +27,42 @@
             <option th:value="VOX">Vox</option>
             <option th:value="VILO">Vilo</option>
         </select>
+        <small th:errors="*{padModel}" id="padModelError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <label for="size">Size:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{size}"
                 type="number"
                 id="size"
                 name="size"
         >
+        <small th:errors="*{size}" id="sizeError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <label for="price">Price:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{price}"
                 type="number"
                 id="price"
                 name="classRate"
                 step="0.01"
         >
+        <small th:errors="*{price}" id="priceError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <label for="imageUrl">Image Url:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{imageUrl}"
                 type="text"
                 id="imageUrl"
                 name="imageUrl"
         >
+        <small th:errors="*{imageUrl}" id="imageUrlError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <button type="submit" class="btn btn-primary btn-block w-50">Add Pad</button>
         <a type="submit" class="btn btn-primary btn-block w-50" th:href="@{/}">Back</a>

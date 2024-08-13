@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Parquet Item</title>
     <link rel="stylesheet" href="/css/style3.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/gif" />
 </head>
 <body>
 <div class="container">
@@ -17,14 +18,18 @@
     >
         <label for="name">Name:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{name}"
                 type="text"
                 id="name"
                 name="name"
         >
+        <small th:errors="*{name}" id="nameError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <label for="modelName">Model:</label>
         <select
+                th:errorclass="'is-invalid'"
                 class="browser-default custom-select"
                 id="modelName"
                 name="modelName"
@@ -36,40 +41,54 @@
             <option th:value="LAMINATE">Laminate</option>
             <option th:value="CARPET_TILES">Carpet Tiles</option>
         </select>
+        <small th:if="${#fields.hasErrors('modelName')}" id="firstNameError"
+               class="invalid-feedback bg-danger rounded">must not be null</small>
 
         <label for="size">Size:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{size}"
                 type="number"
                 id="size"
                 name="size"
         >
+        <small th:errors="*{size}" id="sizeError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <label for="classRate">Class Rate:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{classRate}"
                 type="number"
                 id="classRate"
                 name="classRate"
                 step="1"
         >
+        <small th:errors="*{classRate}" id="classRateError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <label for="price">Price:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{price}"
                 type="number"
                 id="price"
                 name="classRate"
                 step="0.01"
         >
+        <small th:errors="*{price}" id="priceError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <label for="imageUrl">Image Url:</label>
         <input
+                th:errorclass="'is-invalid'"
                 th:field="*{imageUrl}"
                 type="text"
                 id="imageUrl"
                 name="imageUrl"
         >
+        <small th:errors="*{imageUrl}" id="imageUrlError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <button type="submit" class="btn btn-primary btn-block w-50">Add Parquet</button>
         <a type="submit" class="btn btn-primary btn-block w-50" th:href="@{/}">Back</a>

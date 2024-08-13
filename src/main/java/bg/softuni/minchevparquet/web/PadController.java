@@ -58,7 +58,7 @@ public class PadController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("padData", addPadDTO);
             redirectAttributes.addFlashAttribute(
-                    "org.springframework.validation.BindingResult.addPadDTO", bindingResult);
+                    "org.springframework.validation.BindingResult.padData", bindingResult);
             return "redirect:/pads/add";
         }
 
