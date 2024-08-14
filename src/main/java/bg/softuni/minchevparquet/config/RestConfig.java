@@ -39,7 +39,6 @@ public class RestConfig {
                                         mud.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList()
                                 )
                         );
-//                        System.out.println("BEARER TOKEN: " + bearerToken);
 
                         r.getHeaders().setBearerAuth(bearerToken);
                     });

@@ -114,7 +114,7 @@
                                 </form>
                             </li>
                             <li sec:authorize="isAuthenticated()">
-                                <a th:href="@{/users/rename/{id}(id=${#authentication.principal.id})}"><img src="/images/search-icon.png"></a>
+                                <a th:href="@{/users/rename/{id}(id=${#authentication.principal.id})}"><img src="/images/settings.png" style="width: 25px"></a>
                             </li>
                         </ul>
                     </div>
