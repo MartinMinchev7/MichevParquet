@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.932s</div>
+<div class="counter">0.895s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,12 +79,12 @@
 </thead>
 <tr>
 <td class="success">testRenameUser_Success()</td>
-<td class="success">0.146s</td>
+<td class="success">0.148s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testViewLogin()</td>
-<td class="success">0.776s</td>
+<td class="success">0.737s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -97,8 +97,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2024-08-14T14:33:42.738+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [bg.softuni.minchevparquet.web.LoginControllerIT]: LoginControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-08-14T14:33:42.759+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration bg.softuni.minchevparquet.MinchevParquetApplication for test class bg.softuni.minchevparquet.web.LoginControllerIT
+<pre>2024-08-14T17:56:20.740+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [bg.softuni.minchevparquet.web.LoginControllerIT]: LoginControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-14T17:56:20.758+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration bg.softuni.minchevparquet.MinchevParquetApplication for test class bg.softuni.minchevparquet.web.LoginControllerIT
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -109,26 +109,26 @@
 
  :: Spring Boot ::                (v3.3.1)
 
-2024-08-14T14:33:42.795+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] b.s.m.web.LoginControllerIT              : Starting LoginControllerIT using Java 21.0.3 with PID 4308 (started by Marti in C:\Users\Marti\Desktop\MyFinalProject\MinchevParquet)
-2024-08-14T14:33:42.795+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] b.s.m.web.LoginControllerIT              : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-08-14T14:33:42.980+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-08-14T14:33:43.001+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 6 JPA repository interfaces.
-2024-08-14T14:33:43.128+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-08-14T14:33:43.132+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-08-14T14:33:43.143+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-08-14T14:33:43.144+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2024-08-14T14:33:43.165+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.PoolBase          : HikariPool-2 - Driver does not support get/set network timeout for connections. (feature not supported)
-2024-08-14T14:33:43.165+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.hsqldb.jdbc.JDBCConnection@791a76b2
-2024-08-14T14:33:43.165+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2024-08-14T14:33:43.301+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-08-14T14:33:43.329+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-08-14T14:33:43.791+03:00  WARN 4308 --- [MinchevParquet] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-08-14T14:33:43.799+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
-2024-08-14T14:33:43.806+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2024-08-14T14:33:44.007+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-08-14T14:33:44.007+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-08-14T14:33:44.008+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2024-08-14T14:33:44.018+03:00  INFO 4308 --- [MinchevParquet] [    Test worker] b.s.m.web.LoginControllerIT              : Started LoginControllerIT in 1.256 seconds (process running for 14.983)
+2024-08-14T17:56:20.797+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] b.s.m.web.LoginControllerIT              : Starting LoginControllerIT using Java 21.0.3 with PID 7872 (started by Marti in C:\Users\Marti\Desktop\MyFinalProject\MinchevParquet)
+2024-08-14T17:56:20.798+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] b.s.m.web.LoginControllerIT              : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-08-14T17:56:20.979+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-14T17:56:21.006+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 6 JPA repository interfaces.
+2024-08-14T17:56:21.139+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-14T17:56:21.143+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-14T17:56:21.157+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-14T17:56:21.159+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-08-14T17:56:21.184+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.PoolBase          : HikariPool-2 - Driver does not support get/set network timeout for connections. (feature not supported)
+2024-08-14T17:56:21.184+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.hsqldb.jdbc.JDBCConnection@c0e882bc
+2024-08-14T17:56:21.184+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-08-14T17:56:21.316+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-14T17:56:21.342+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-14T17:56:21.803+03:00  WARN 7872 --- [MinchevParquet] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-14T17:56:21.812+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2024-08-14T17:56:21.819+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-08-14T17:56:22.025+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-08-14T17:56:22.026+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-08-14T17:56:22.027+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2024-08-14T17:56:22.043+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] b.s.m.web.LoginControllerIT              : Started LoginControllerIT in 1.281 seconds (process running for 15.083)
 </pre>
 </span>
 </div>
@@ -140,7 +140,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.8</a> at Aug 14, 2024, 2:33:47 PM</p>
+<a href="http://www.gradle.org">Gradle 8.8</a> at Aug 14, 2024, 5:56:25 PM</p>
 </div>
 </div>
 </body>

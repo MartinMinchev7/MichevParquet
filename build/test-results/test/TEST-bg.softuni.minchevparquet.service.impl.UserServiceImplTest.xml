@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-08-14T11:33:42" hostname="DESKTOP-K5UUR2P" time="0.251">
+<testsuite name="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-08-14T14:56:20" hostname="DESKTOP-K5UUR2P" time="0.264">
   <properties/>
-  <testcase name="testGetCurrentUserWhenNotAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.115"/>
-  <testcase name="testGetCurrentUserWhenPrincipalIsNotUserDetails()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.027"/>
-  <testcase name="testGetCurrentUserWhenAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.053"/>
-  <testcase name="testUserRegistration()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.053"/>
+  <testcase name="testGetCurrentUserWhenNotAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.123"/>
+  <testcase name="testGetCurrentUserWhenPrincipalIsNotUserDetails()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.026"/>
+  <testcase name="testGetCurrentUserWhenAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.062"/>
+  <testcase name="testUserRegistration()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.051"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

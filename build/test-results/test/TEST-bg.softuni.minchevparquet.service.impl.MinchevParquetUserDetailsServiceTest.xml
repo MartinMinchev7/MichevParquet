@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bg.softuni.minchevparquet.service.impl.MinchevParquetUserDetailsServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-14T11:33:41" hostname="DESKTOP-K5UUR2P" time="0.253">
+<testsuite name="bg.softuni.minchevparquet.service.impl.MinchevParquetUserDetailsServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-14T14:56:19" hostname="DESKTOP-K5UUR2P" time="0.258">
   <properties/>
-  <testcase name="testLoadUserByUsername_UserNotFound()" classname="bg.softuni.minchevparquet.service.impl.MinchevParquetUserDetailsServiceTest" time="0.235"/>
+  <testcase name="testLoadUserByUsername_UserNotFound()" classname="bg.softuni.minchevparquet.service.impl.MinchevParquetUserDetailsServiceTest" time="0.24"/>
   <testcase name="testLoadUserByUsername_UserFound()" classname="bg.softuni.minchevparquet.service.impl.MinchevParquetUserDetailsServiceTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
