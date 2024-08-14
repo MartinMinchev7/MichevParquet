@@ -49,7 +49,6 @@ public class ParquetController {
 
 
     @DeleteMapping("/{id}")
-//    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<ParquetDTO> deleteById(@PathVariable("id") Long id) {
         parquetService.deleteParquet(id);
         return ResponseEntity.noContent().build();

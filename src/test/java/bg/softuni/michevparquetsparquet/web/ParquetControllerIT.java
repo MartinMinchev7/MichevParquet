@@ -314,10 +314,4 @@ public class ParquetControllerIT {
         return parquetRepository.save(parquet);
     }
 
-//    @Test
-//    public void testParquetNotFound() throws Exception {
-//        mockMvc.perform(get("/parquets/{id}", "1000000")
-//                        .contentType(MediaType.APPLICATION_JSON))
-//               .andExpect(status().isNotFound());
-//    }
 }
