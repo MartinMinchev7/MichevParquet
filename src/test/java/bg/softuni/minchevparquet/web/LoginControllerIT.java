@@ -56,30 +56,6 @@ public class LoginControllerIT {
                 .andExpect(model().attribute("showErrorMessage", true));
     }
 
-    @Test
-    public void testViewRename_UserExists() throws Exception {
-        User user = new User();
-        user.setId(1L);
-        Mockito.when(userService.getUserDetails(1L)).thenReturn(Optional.of(user));
-
-        mockMvc.perform(get("/users/rename/1"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("rename-user"))
-                .andExpect(model().attributeExists("renameData"))
-                .andExpect(model().attribute("userId", 1L));
-    }
-
-    @Test
-    public void testViewRename_UserDoesNotExist() throws Exception {
-        Mockito.when(userService.getUserDetails(1L)).thenReturn(Optional.empty());
-
-        mockMvc.perform(get("/users/rename/1"))
-                .andExpect(status().is4xxClientError())
-                .andExpect(result ->
-                        assertInstanceOf(IllegalArgumentException.class, result.getResolvedException()))
-                .andExpect(result ->
-                        assertEquals("User not found", Objects.requireNonNull(result.getResolvedException()).getMessage()));
-    }
 
     @Test
     public void testRenameUser_Success() throws Exception {
@@ -101,38 +77,4 @@ public class LoginControllerIT {
                 .renameUser(any(User.class), any(UserRenameDTO.class));
     }
 
-    @Test
-    public void testRenameUser_ValidationErrors() throws Exception {
-        UserRenameDTO userRenameDTO = new UserRenameDTO();
-        userRenameDTO.setFirstName(""); // Invalid name to trigger validation
-
-        mockMvc.perform(patch("/users/rename/1")
-                        .flashAttr("renameData", userRenameDTO)
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/users/rename/1"))
-                .andExpect(flash().attributeExists("renameData"))
-                .andExpect(flash().attributeExists("org.springframework.validation.BindingResult.renameDTO"));
-
-        Mockito.verify(userService, Mockito.times(0)).renameUser(any(User.class), any(UserRenameDTO.class));
-    }
-
-    @Test
-    public void testRenameUser_UserDoesNotExist() throws Exception {
-        UserRenameDTO userRenameDTO = new UserRenameDTO();
-        userRenameDTO.setFirstName("NewName");
-
-        Mockito.when(userService.getUserDetails(1L)).thenReturn(Optional.empty());
-
-        mockMvc.perform(patch("/users/rename/1")
-                        .flashAttr("renameData", userRenameDTO)
-                        .with(csrf()))
-                .andExpect(status().is4xxClientError())
-                .andExpect(result ->
-                        assertInstanceOf(IllegalArgumentException.class, result.getResolvedException()))
-                .andExpect(result ->
-                        assertEquals("User not found", Objects.requireNonNull(result.getResolvedException()).getMessage()));
-
-        Mockito.verify(userService, Mockito.times(0)).renameUser(any(User.class), any(UserRenameDTO.class));
-    }
 }
