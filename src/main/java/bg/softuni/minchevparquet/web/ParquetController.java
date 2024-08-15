@@ -118,7 +118,7 @@ public class ParquetController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("parquetRenameData", renameDTO);
             redirectAttributes.addFlashAttribute(
-                    "org.springframework.validation.BindingResult.renameDTO", bindingResult);
+                    "org.springframework.validation.BindingResult.parquetRenameData", bindingResult);
             return "redirect:parquets/update/" + id;
         }
 

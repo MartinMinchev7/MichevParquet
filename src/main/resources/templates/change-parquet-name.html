@@ -21,6 +21,8 @@
                 id="name"
                 name="name"
         >
+        <small th:errors="*{name}" id="nameError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
 
         <button type="submit" class="btn btn-primary btn-block w-50">Rename</button>
         <a type="submit" class="btn btn-primary btn-block w-50" th:href="@{/}">Back</a>

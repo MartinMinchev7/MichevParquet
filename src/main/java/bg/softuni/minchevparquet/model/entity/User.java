@@ -1,6 +1,5 @@
 package bg.softuni.minchevparquet.model.entity;
 
-import bg.softuni.minchevparquet.model.dto.ParquetDetailsDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 
@@ -33,8 +32,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany
-    private List<Parquet> favouriteParquets;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -87,14 +84,6 @@ public class User {
         this.password = password;
     }
 
-    public List<Parquet> getFavouriteParquets() {
-        return favouriteParquets;
-    }
-
-    public void setFavouriteParquets(List<Parquet> parquets) {
-        this.favouriteParquets = parquets;
-    }
-
     public List<UserRole> getRoles() {
         return roles;
     }
@@ -120,14 +109,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", uuid=" + uuid +
                 ", password='" + password + '\'' +
-                ", favouriteParquets=" + favouriteParquets +
                 ", roles=" + roles +
                 '}';
-    }
-
-    public void addFavourite(Parquet parquet) {
-        if (!favouriteParquets.contains(parquet)) {
-            favouriteParquets.add(parquet);
-        }
     }
 }

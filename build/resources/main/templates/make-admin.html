@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="container" style="margin: 10px 650px">
+    <h1>Change Parquet Name</h1>
+    <form
+            id="addRenameParquet"
+            th:method="patch"
+            th:action="@{/users/admin}"
+            th:object="${adminData}"
+    >
+        <label for="name">Id:</label>
+        <input
+                th:field="*{id}"
+                type="text"
+                id="name"
+                name="name"
+        >
+        <small th:errors="*{id}" id="idError"
+               class="invalid-feedback text-white form-text bg-danger rounded"></small>
+
+        <button type="submit" class="btn btn-primary btn-block w-50">Make Admin</button>
+        <a type="submit" class="btn btn-primary btn-block w-50" th:href="@{/}">Back</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package bg.softuni.minchevparquet.service;
 
+import bg.softuni.minchevparquet.model.dto.MakeAdminDTO;
 import bg.softuni.minchevparquet.model.dto.UserRenameDTO;
 import bg.softuni.minchevparquet.model.dto.UserRegisterDTO;
 import bg.softuni.minchevparquet.model.entity.User;
@@ -15,5 +16,6 @@ public interface UserService {
     void renameUser(User user, UserRenameDTO userRenameDTO);
 
     Optional<User> getUserDetails(Long id);
-//    List<Parquet> findFavourites(UUID uuid);
+
+    void makeAdmin(MakeAdminDTO makeAdminDTO);
 }

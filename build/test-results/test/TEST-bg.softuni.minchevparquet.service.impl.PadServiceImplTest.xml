@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-08-14T14:56:20" hostname="DESKTOP-K5UUR2P" time="0.363">
+<testsuite name="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-08-15T00:18:01" hostname="DESKTOP-K5UUR2P" time="0.34">
   <properties/>
-  <testcase name="testCreatePadSuccess()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.343"/>
+  <testcase name="testCreatePadSuccess()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.32"/>
   <testcase name="testGetPadDetailsNotFound()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.004"/>
-  <testcase name="testDeletePad()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.002"/>
+  <testcase name="testDeletePad()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.003"/>
   <testcase name="testCreatePadModelNotFound()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.003"/>
-  <testcase name="testGetPadDetailsSuccess()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.002"/>
+  <testcase name="testGetPadDetailsSuccess()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.003"/>
   <testcase name="testGetAllPadsSummary()" classname="bg.softuni.minchevparquet.service.impl.PadServiceImplTest" time="0.004"/>
   <system-out><![CDATA[null
 ]]></system-out>

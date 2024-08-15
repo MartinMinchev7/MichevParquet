@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-08-14T14:56:20" hostname="DESKTOP-K5UUR2P" time="0.264">
+<testsuite name="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2024-08-15T00:18:02" hostname="DESKTOP-K5UUR2P" time="0.274">
   <properties/>
-  <testcase name="testGetCurrentUserWhenNotAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.123"/>
+  <testcase name="testGetCurrentUserWhenNotAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.091"/>
+  <testcase name="testRenameUser_LastNameOnlySet()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.002"/>
   <testcase name="testGetCurrentUserWhenPrincipalIsNotUserDetails()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.026"/>
-  <testcase name="testGetCurrentUserWhenAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.062"/>
-  <testcase name="testUserRegistration()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.051"/>
+  <testcase name="testGetCurrentUserWhenAuthenticated()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.069"/>
+  <testcase name="testRenameUser_FirstNameAndLastNameSet()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.002"/>
+  <testcase name="testMakeAdmin_UserNotFound()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.004"/>
+  <testcase name="testRenameUser_FirstNameOnlySet()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.002"/>
+  <testcase name="testMakeAdmin_UserAlreadyHasAdminRole()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.003"/>
+  <testcase name="testMakeAdmin_IdIsNull()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.004"/>
+  <testcase name="testUserRegistration()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.057"/>
+  <testcase name="testMakeAdmin_UserFound()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.003"/>
+  <testcase name="testRenameUser_NothingSet()" classname="bg.softuni.minchevparquet.service.impl.UserServiceImplTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

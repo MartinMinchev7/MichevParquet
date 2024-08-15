@@ -1,5 +1,6 @@
 package bg.softuni.minchevparquet.service.impl;
 
+import bg.softuni.minchevparquet.model.dto.MakeAdminDTO;
 import bg.softuni.minchevparquet.model.dto.UserRenameDTO;
 import bg.softuni.minchevparquet.model.dto.UserRegisterDTO;
 import bg.softuni.minchevparquet.model.entity.User;
@@ -64,11 +65,17 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id);
     }
 
-//    public List<Parquet> findFavourites(UUID uuid) {
-//        return userRepository.findByUuid(uuid)
-//               .map(User::getFavouriteParquets)
-//               .orElse(new ArrayList<>());
-//    }
+    @Override
+    public void makeAdmin(MakeAdminDTO makeAdminDTO) {
+        if (makeAdminDTO.getId() != null) {
+            User adminUser = userRepository.findById(makeAdminDTO.getId())
+                   .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+            adminUser.getRoles().add(userRoleRepository.findByRole(UserRoleEnum.ADMIN));
+            userRepository.save(adminUser);
+        }
+    }
+
 
     private User map(UserRegisterDTO userRegisterDTO) {
         User user = modelMapper.map(userRegisterDTO, User.class);

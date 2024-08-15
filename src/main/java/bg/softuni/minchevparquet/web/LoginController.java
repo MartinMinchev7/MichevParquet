@@ -1,5 +1,6 @@
 package bg.softuni.minchevparquet.web;
 
+import bg.softuni.minchevparquet.model.dto.MakeAdminDTO;
 import bg.softuni.minchevparquet.model.dto.UserRenameDTO;
 import bg.softuni.minchevparquet.model.dto.UserLoginDTO;
 import bg.softuni.minchevparquet.model.entity.User;
@@ -68,7 +69,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("renameData", userRenameDTO);
             redirectAttributes.addFlashAttribute(
-                    "org.springframework.validation.BindingResult.renameDTO", bindingResult);
+                    "org.springframework.validation.BindingResult.renameData", bindingResult);
             return "redirect:/users/rename/" + id;
         }
 
@@ -79,6 +80,31 @@ public class LoginController {
         }
 
         userService.renameUser(user.get(), userRenameDTO);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/admin")
+    public ModelAndView viewMakeAdmin() {
+        ModelAndView modelAndView = new ModelAndView("make-admin");
+        modelAndView.addObject("adminData", new MakeAdminDTO());
+
+        return modelAndView;
+    }
+
+    @PatchMapping("/admin")
+    public String makeAdmin(@Valid MakeAdminDTO makeAdminDTO,
+                             BindingResult bindingResult,
+                             RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("adminData", makeAdminDTO);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.adminData", bindingResult);
+            return "redirect:/users/admin";
+        }
+
+        userService.makeAdmin(makeAdminDTO);
 
         return "redirect:/";
     }

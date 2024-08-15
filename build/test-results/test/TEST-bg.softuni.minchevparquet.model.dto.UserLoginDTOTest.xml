@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="bg.softuni.minchevparquet.model.dto.UserLoginDTOTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-08-15T00:18:01" hostname="DESKTOP-K5UUR2P" time="0.005">
+  <properties/>
+  <testcase name="testSetPassword()" classname="bg.softuni.minchevparquet.model.dto.UserLoginDTOTest" time="0.001"/>
+  <testcase name="testGetPassword()" classname="bg.softuni.minchevparquet.model.dto.UserLoginDTOTest" time="0.001"/>
+  <testcase name="testGetEmail()" classname="bg.softuni.minchevparquet.model.dto.UserLoginDTOTest" time="0.001"/>
+  <testcase name="testSetEmail()" classname="bg.softuni.minchevparquet.model.dto.UserLoginDTOTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

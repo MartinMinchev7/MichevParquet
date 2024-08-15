@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="bg.softuni.minchevparquet.web.RegistrationControllerIT" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-14T14:56:24" hostname="DESKTOP-K5UUR2P" time="0.06">
+<testsuite name="bg.softuni.minchevparquet.web.RegistrationControllerIT" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-15T00:18:06" hostname="DESKTOP-K5UUR2P" time="0.065">
   <properties/>
-  <testcase name="testGetRegister()" classname="bg.softuni.minchevparquet.web.RegistrationControllerIT" time="0.036"/>
-  <testcase name="testPostRegister_Failure()" classname="bg.softuni.minchevparquet.web.RegistrationControllerIT" time="0.023"/>
-  <system-out><![CDATA[2024-08-14T17:56:24.358+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [bg.softuni.minchevparquet.web.RegistrationControllerIT]: RegistrationControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-08-14T17:56:24.361+03:00  INFO 7872 --- [MinchevParquet] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration bg.softuni.minchevparquet.MinchevParquetApplication for test class bg.softuni.minchevparquet.web.RegistrationControllerIT
+  <testcase name="testGetRegister()" classname="bg.softuni.minchevparquet.web.RegistrationControllerIT" time="0.038"/>
+  <testcase name="testPostRegister_Failure()" classname="bg.softuni.minchevparquet.web.RegistrationControllerIT" time="0.025"/>
+  <system-out><![CDATA[2024-08-15T03:18:06.234+03:00  INFO 17600 --- [MinchevParquet] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [bg.softuni.minchevparquet.web.RegistrationControllerIT]: RegistrationControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-08-15T03:18:06.237+03:00  INFO 17600 --- [MinchevParquet] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration bg.softuni.minchevparquet.MinchevParquetApplication for test class bg.softuni.minchevparquet.web.RegistrationControllerIT
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
